@@ -227,11 +227,10 @@ A production confidence model would require human-verified answers, retrieval la
 6. Routing depends on recognizable wording, and not every corpus-wide question triggers exhaustive aggregation.
 7. Duplicate figure and reference representations can consume top-k positions and inflate agreement.
 8. Hard links cover explicit registry instructions; implicit conceptual relationships are not stored as graph edges.
-9. The embedding model is fast and suitable for the prototype but is not clinically fine-tuned.
 10. Assistant abstention can be inconsistent when evidence is present but units or visual relationships are incomplete.
 11. Confidence is heuristic, compressed, and not a calibrated probability.
 12. The official set lacks gold answers, so true answer accuracy remains unmeasured.
-13. The batch runs used independent sessions and did not evaluate multi-turn memory quality.
+
 
 ## What we would do next
 
