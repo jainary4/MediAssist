@@ -20,13 +20,17 @@ ANSWER_THRESHOLD = 0.75
 def pre_answer_check(
     evidence_pack: EvidencePack,
 ) -> list[str]:
-    """Check whether retrieval found minimally usable evidence.
+    """Perform intent-specific checks before invoking the LLM.
+
+    These checks only block when evidence mandatory for the selected
+    intent is missing. Optional retrieval channels never cause
+    abstention.
 
     Args:
         evidence_pack (EvidencePack): Initial retrieval result.
 
     Returns:
-        list[str]: Blocking errors. An empty list means the LLM may run.
+        list[str]: Blocking evidence errors.
     """
     errors: list[str] = []
     route = evidence_pack.route
@@ -37,7 +41,110 @@ def pre_answer_check(
             "No evidence was found in the document collection."
         ]
 
-    if route.requires_cross_document:
+    if route.intent == "classification_code":
+        classification_found = any(
+            re.search(
+                r"\bCMX-[A-Z0-9]+\b",
+                item.text,
+                flags=re.IGNORECASE,
+            )
+            for item in evidence
+        )
+
+        if not classification_found:
+            errors.append(
+                "The named document was retrieved, but no "
+                "classification code was found in its evidence."
+            )
+
+    if route.intent == "review_body":
+        approval_footnote_found = any(
+            item.content_type == "footnote"
+            or "reviewed and approved by"
+            in item.text.casefold()
+            for item in evidence
+        )
+
+        if not approval_footnote_found:
+            errors.append(
+                "The Document Control Record refers to an approval "
+                "footnote, but no resolved approval footnote was "
+                "retrieved."
+            )
+
+    if route.intent == "figure_value":
+        figure_found = any(
+            item.content_type == "figure"
+            for item in evidence
+        )
+
+        if not figure_found:
+            errors.append(
+                "The question explicitly requires figure evidence, "
+                "but no figure record was retrieved."
+            )
+
+    if route.intent == "scanned_appendix":
+        appendix_answer_found = any(
+            (
+                "formulary agent of record"
+                in item.text.casefold()
+            )
+            and (
+                "induction"
+                in item.text.casefold()
+            )
+            and bool(
+                re.search(
+                    r"\b\d+(?:\.\d+)?\s*"
+                    r"(?:mg|mcg|g)\b",
+                    item.text,
+                    flags=re.IGNORECASE,
+                )
+            )
+            for item in evidence
+        )
+
+        if not appendix_answer_found:
+            errors.append(
+                "The scanned appendix was requested, but no OCR "
+                "evidence containing both the formulary agent and "
+                "its induction dose was retrieved."
+            )
+
+    if route.intent == "maintenance_dose":
+        maintenance_evidence_found = any(
+            (
+                item.content_type
+                in {
+                    "table",
+                    "table_parent",
+                    "table_window",
+                    "structured_table_row",
+                }
+            )
+            and (
+                "maintenance"
+                in item.text.casefold()
+            )
+            and bool(
+                re.search(
+                    r"\b\d+(?:\.\d+)?\s*"
+                    r"(?:mg|mcg|g)\b",
+                    item.text,
+                    flags=re.IGNORECASE,
+                )
+            )
+            for item in evidence
+        )
+
+        if not maintenance_evidence_found:
+            errors.append(
+                "The requested maintenance dose was not found in "
+                "retrieved structured table evidence."
+            )
+
+    if route.intent == "cross_document_dose":
         references = [
             item
             for item in evidence
@@ -45,49 +152,92 @@ def pre_answer_check(
         ]
 
         target_document_ids = {
-            item.metadata.get("target_document_id")
+            str(
+                item.metadata.get(
+                    "target_document_id"
+                )
+            )
             for item in references
-            if item.metadata.get("target_document_id")
+            if item.metadata.get(
+                "target_document_id"
+            )
         }
 
-        target_evidence_found = any(
-            item.document_id in target_document_ids
+        target_evidence = [
+            item
             for item in evidence
-        )
+            if item.document_id
+            in target_document_ids
+        ]
 
         if not references:
             errors.append(
-                "The question requires a document link, but no "
-                "explicit reference was retrieved."
+                "The question requires an explicit document link, "
+                "but no document-reference record was retrieved."
             )
-        elif not target_evidence_found:
+        elif not target_evidence:
             errors.append(
-                "The source reference was found, but no evidence "
-                "was retrieved from its target document."
+                "The source document reference was found, but no "
+                "evidence was retrieved from the target document."
+            )
+        else:
+            target_dose_found = any(
+                (
+                    "induction"
+                    in item.text.casefold()
+                )
+                and bool(
+                    re.search(
+                        r"\b\d+(?:\.\d+)?\s*"
+                        r"(?:mg|mcg|g)\b",
+                        item.text,
+                        flags=re.IGNORECASE,
+                    )
+                )
+                for item in target_evidence
             )
 
-    if route.requires_figure:
-        has_figure_evidence = any(
-            item.content_type == "figure"
-            for item in evidence
-        )
+            if not target_dose_found:
+                errors.append(
+                    "The target document was retrieved, but no "
+                    "unambiguous induction-dose evidence was found."
+                )
 
-        if not has_figure_evidence:
-            errors.append(
-                "The question requires figure evidence, but no "
-                "figure record was retrieved."
-            )
-
-    if route.requires_corpus_aggregation:
-        has_aggregation = any(
+    if route.intent in {
+        "corpus_monitoring_tier",
+        "corpus_formulary_agent",
+    }:
+        aggregation_found = any(
             item.content_type == "corpus_aggregation"
             for item in evidence
         )
 
-        if not has_aggregation:
+        if not aggregation_found:
             errors.append(
                 "The question asks for a complete corpus-wide set, "
                 "but no structured aggregation was produced."
+            )
+
+    if route.intent == "reverse_registry_code":
+        registry_match = re.search(
+            r"\bCDR-\d+\b",
+            evidence_pack.question,
+            flags=re.IGNORECASE,
+        )
+
+        registry_found = (
+            registry_match is not None
+            and any(
+                registry_match.group(0).casefold()
+                in item.text.casefold()
+                for item in evidence
+            )
+        )
+
+        if not registry_found:
+            errors.append(
+                "The requested registry code does not appear in "
+                "retrieved document metadata or control records."
             )
 
     return errors
