@@ -1,0 +1,458 @@
+{
+  "total_pdfs": 50,
+  "passed": 50,
+  "manual_review": 0,
+  "remote_errors": 0,
+  "results": [
+    {
+      "filename": "00_short_bowel_syndrome.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/00_short_bowel_syndrome.pdf",
+      "status": "pass",
+      "document_id": "00_short_bowel_syndrome-43e6f73ed6ef",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/00_short_bowel_syndrome-43e6f73ed6ef"
+    },
+    {
+      "filename": "01_urinary_tract_infections_in_children.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/01_urinary_tract_infections_in_children.pdf",
+      "status": "pass",
+      "document_id": "01_urinary_tract_infections_in_children-f128a5bd650e",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/01_urinary_tract_infections_in_children-f128a5bd650e"
+    },
+    {
+      "filename": "02_abdominal_adhesions.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/02_abdominal_adhesions.pdf",
+      "status": "pass",
+      "document_id": "02_abdominal_adhesions-9b9147b32b26",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/02_abdominal_adhesions-9b9147b32b26"
+    },
+    {
+      "filename": "03_adrenal_insufficiency_and_addison_s_disease.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/03_adrenal_insufficiency_and_addison_s_disease.pdf",
+      "status": "pass",
+      "document_id": "03_adrenal_insufficiency_and_addison_s_disease-16aad6bc14ee",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/03_adrenal_insufficiency_and_addison_s_disease-16aad6bc14ee"
+    },
+    {
+      "filename": "04_amyloidosis_and_kidney_disease.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/04_amyloidosis_and_kidney_disease.pdf",
+      "status": "pass",
+      "document_id": "04_amyloidosis_and_kidney_disease-61c75669a025",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/04_amyloidosis_and_kidney_disease-61c75669a025"
+    },
+    {
+      "filename": "05_cyclic_vomiting_syndrome.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/05_cyclic_vomiting_syndrome.pdf",
+      "status": "pass",
+      "document_id": "05_cyclic_vomiting_syndrome-44d0075557b9",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/05_cyclic_vomiting_syndrome-44d0075557b9"
+    },
+    {
+      "filename": "06_diabetic_neuropathies_the_nerve_damage_of_di.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/06_diabetic_neuropathies_the_nerve_damage_of_di.pdf",
+      "status": "pass",
+      "document_id": "06_diabetic_neuropathies_the_nerve_damage_of_di-d44bb54363be",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/06_diabetic_neuropathies_the_nerve_damage_of_di-d44bb54363be"
+    },
+    {
+      "filename": "07_kidney_dysplasia.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/07_kidney_dysplasia.pdf",
+      "status": "pass",
+      "document_id": "07_kidney_dysplasia-1a7081403f2e",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/07_kidney_dysplasia-1a7081403f2e"
+    },
+    {
+      "filename": "08_polycystic_kidney_disease.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/08_polycystic_kidney_disease.pdf",
+      "status": "pass",
+      "document_id": "08_polycystic_kidney_disease-d84f75ebf77f",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/08_polycystic_kidney_disease-d84f75ebf77f"
+    },
+    {
+      "filename": "09_prostate_enlargement_benign_prostatic_hyperp.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/09_prostate_enlargement_benign_prostatic_hyperp.pdf",
+      "status": "pass",
+      "document_id": "09_prostate_enlargement_benign_prostatic_hyperp-a8d621453e72",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/09_prostate_enlargement_benign_prostatic_hyperp-a8d621453e72"
+    },
+    {
+      "filename": "10_alagille_syndrome.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/10_alagille_syndrome.pdf",
+      "status": "pass",
+      "document_id": "10_alagille_syndrome-dae809687498",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/10_alagille_syndrome-dae809687498"
+    },
+    {
+      "filename": "11_breast_cancer.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/11_breast_cancer.pdf",
+      "status": "pass",
+      "document_id": "11_breast_cancer-d6e5d4595fdd",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/11_breast_cancer-d6e5d4595fdd"
+    },
+    {
+      "filename": "12_retinoblastoma.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/12_retinoblastoma.pdf",
+      "status": "pass",
+      "document_id": "12_retinoblastoma-0e37840d99e6",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/12_retinoblastoma-0e37840d99e6"
+    },
+    {
+      "filename": "13_adult_acute_myeloid_leukemia.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/13_adult_acute_myeloid_leukemia.pdf",
+      "status": "pass",
+      "document_id": "13_adult_acute_myeloid_leukemia-76954e2c5bb0",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/13_adult_acute_myeloid_leukemia-76954e2c5bb0"
+    },
+    {
+      "filename": "14_adult_central_nervous_system_tumors.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/14_adult_central_nervous_system_tumors.pdf",
+      "status": "pass",
+      "document_id": "14_adult_central_nervous_system_tumors-6e4e7f7b5286",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/14_adult_central_nervous_system_tumors-6e4e7f7b5286"
+    },
+    {
+      "filename": "15_adult_hodgkin_lymphoma.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/15_adult_hodgkin_lymphoma.pdf",
+      "status": "pass",
+      "document_id": "15_adult_hodgkin_lymphoma-55009d738a97",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/15_adult_hodgkin_lymphoma-55009d738a97"
+    },
+    {
+      "filename": "16_adult_non_hodgkin_lymphoma.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/16_adult_non_hodgkin_lymphoma.pdf",
+      "status": "pass",
+      "document_id": "16_adult_non_hodgkin_lymphoma-8c0ffbd49616",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/16_adult_non_hodgkin_lymphoma-8c0ffbd49616"
+    },
+    {
+      "filename": "17_adult_primary_liver_cancer.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/17_adult_primary_liver_cancer.pdf",
+      "status": "pass",
+      "document_id": "17_adult_primary_liver_cancer-d2c08cb2ab70",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/17_adult_primary_liver_cancer-d2c08cb2ab70"
+    },
+    {
+      "filename": "18_adult_soft_tissue_sarcoma.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/18_adult_soft_tissue_sarcoma.pdf",
+      "status": "pass",
+      "document_id": "18_adult_soft_tissue_sarcoma-41b4459badb9",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/18_adult_soft_tissue_sarcoma-41b4459badb9"
+    },
+    {
+      "filename": "19_anal_cancer.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/19_anal_cancer.pdf",
+      "status": "pass",
+      "document_id": "19_anal_cancer-9770d453605c",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/19_anal_cancer-9770d453605c"
+    },
+    {
+      "filename": "20_bile_duct_cancer_cholangiocarcinoma.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/20_bile_duct_cancer_cholangiocarcinoma.pdf",
+      "status": "pass",
+      "document_id": "20_bile_duct_cancer_cholangiocarcinoma-1632368e0029",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/20_bile_duct_cancer_cholangiocarcinoma-1632368e0029"
+    },
+    {
+      "filename": "21_childhood_astrocytomas.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/21_childhood_astrocytomas.pdf",
+      "status": "pass",
+      "document_id": "21_childhood_astrocytomas-ab8f48816d89",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/21_childhood_astrocytomas-ab8f48816d89"
+    },
+    {
+      "filename": "22_overweight_and_obesity.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/22_overweight_and_obesity.pdf",
+      "status": "pass",
+      "document_id": "22_overweight_and_obesity-b5ce911b3677",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/22_overweight_and_obesity-b5ce911b3677"
+    },
+    {
+      "filename": "23_alpha_1_antitrypsin_deficiency.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/23_alpha_1_antitrypsin_deficiency.pdf",
+      "status": "pass",
+      "document_id": "23_alpha_1_antitrypsin_deficiency-e43220b5f9ad",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/23_alpha_1_antitrypsin_deficiency-e43220b5f9ad"
+    },
+    {
+      "filename": "24_anemia.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/24_anemia.pdf",
+      "status": "pass",
+      "document_id": "24_anemia-b29e7560e7f2",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/24_anemia-b29e7560e7f2"
+    },
+    {
+      "filename": "25_aneurysm.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/25_aneurysm.pdf",
+      "status": "pass",
+      "document_id": "25_aneurysm-04c0fcf9ab70",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/25_aneurysm-04c0fcf9ab70"
+    },
+    {
+      "filename": "26_angina.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/26_angina.pdf",
+      "status": "pass",
+      "document_id": "26_angina-84376274a3db",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/26_angina-84376274a3db"
+    },
+    {
+      "filename": "27_asbestos_related_lung_diseases.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/27_asbestos_related_lung_diseases.pdf",
+      "status": "pass",
+      "document_id": "27_asbestos_related_lung_diseases-608e17af9488",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/27_asbestos_related_lung_diseases-608e17af9488"
+    },
+    {
+      "filename": "28_asthma.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/28_asthma.pdf",
+      "status": "pass",
+      "document_id": "28_asthma-01ee5c240573",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/28_asthma-01ee5c240573"
+    },
+    {
+      "filename": "29_atherosclerosis.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/29_atherosclerosis.pdf",
+      "status": "pass",
+      "document_id": "29_atherosclerosis-5dd3cf0e5491",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/29_atherosclerosis-5dd3cf0e5491"
+    },
+    {
+      "filename": "30_atrial_fibrillation.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/30_atrial_fibrillation.pdf",
+      "status": "pass",
+      "document_id": "30_atrial_fibrillation-1c4aec2ee525",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/30_atrial_fibrillation-1c4aec2ee525"
+    },
+    {
+      "filename": "31_broken_heart_syndrome.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/31_broken_heart_syndrome.pdf",
+      "status": "pass",
+      "document_id": "31_broken_heart_syndrome-4aa93beb5cc1",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/31_broken_heart_syndrome-4aa93beb5cc1"
+    },
+    {
+      "filename": "32_diabetes_heart_disease_and_stroke.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/32_diabetes_heart_disease_and_stroke.pdf",
+      "status": "pass",
+      "document_id": "32_diabetes_heart_disease_and_stroke-edb6da6e2d2e",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/32_diabetes_heart_disease_and_stroke-edb6da6e2d2e"
+    },
+    {
+      "filename": "33_diverticular_disease.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/33_diverticular_disease.pdf",
+      "status": "pass",
+      "document_id": "33_diverticular_disease-9bcecd2a0391",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/33_diverticular_disease-9bcecd2a0391"
+    },
+    {
+      "filename": "34_iga_nephropathy.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/34_iga_nephropathy.pdf",
+      "status": "pass",
+      "document_id": "34_iga_nephropathy-a3f798705ccc",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/34_iga_nephropathy-a3f798705ccc"
+    },
+    {
+      "filename": "35_medullary_sponge_kidney.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/35_medullary_sponge_kidney.pdf",
+      "status": "pass",
+      "document_id": "35_medullary_sponge_kidney-f90235da9a78",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/35_medullary_sponge_kidney-f90235da9a78"
+    },
+    {
+      "filename": "36_nutrition_for_advanced_chronic_kidney_diseas.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/36_nutrition_for_advanced_chronic_kidney_diseas.pdf",
+      "status": "pass",
+      "document_id": "36_nutrition_for_advanced_chronic_kidney_diseas-9312dc02a747",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/36_nutrition_for_advanced_chronic_kidney_diseas-9312dc02a747"
+    },
+    {
+      "filename": "37_acquired_cystic_kidney_disease.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/37_acquired_cystic_kidney_disease.pdf",
+      "status": "pass",
+      "document_id": "37_acquired_cystic_kidney_disease-46f2f26e883a",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/37_acquired_cystic_kidney_disease-46f2f26e883a"
+    },
+    {
+      "filename": "38_anemia_in_chronic_kidney_disease.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/38_anemia_in_chronic_kidney_disease.pdf",
+      "status": "pass",
+      "document_id": "38_anemia_in_chronic_kidney_disease-f8c0ad7a67a0",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/38_anemia_in_chronic_kidney_disease-f8c0ad7a67a0"
+    },
+    {
+      "filename": "39_celiac_disease.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/39_celiac_disease.pdf",
+      "status": "pass",
+      "document_id": "39_celiac_disease-933faad071ed",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/39_celiac_disease-933faad071ed"
+    },
+    {
+      "filename": "40_diabetic_kidney_disease.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/40_diabetic_kidney_disease.pdf",
+      "status": "pass",
+      "document_id": "40_diabetic_kidney_disease-e84577c6749d",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/40_diabetic_kidney_disease-e84577c6749d"
+    },
+    {
+      "filename": "41_foodborne_illnesses.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/41_foodborne_illnesses.pdf",
+      "status": "pass",
+      "document_id": "41_foodborne_illnesses-dad1fd16a577",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/41_foodborne_illnesses-dad1fd16a577"
+    },
+    {
+      "filename": "42_gallstones.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/42_gallstones.pdf",
+      "status": "pass",
+      "document_id": "42_gallstones-933536384644",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/42_gallstones-933536384644"
+    },
+    {
+      "filename": "43_hemolytic_uremic_syndrome_in_children.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/43_hemolytic_uremic_syndrome_in_children.pdf",
+      "status": "pass",
+      "document_id": "43_hemolytic_uremic_syndrome_in_children-8d25da522e8b",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/43_hemolytic_uremic_syndrome_in_children-8d25da522e8b"
+    },
+    {
+      "filename": "44_inguinal_hernia.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/44_inguinal_hernia.pdf",
+      "status": "pass",
+      "document_id": "44_inguinal_hernia-ee88e4f58c2f",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/44_inguinal_hernia-ee88e4f58c2f"
+    },
+    {
+      "filename": "45_kidney_failure_choosing_a_treatment_that_s_r.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/45_kidney_failure_choosing_a_treatment_that_s_r.pdf",
+      "status": "pass",
+      "document_id": "45_kidney_failure_choosing_a_treatment_that_s_r-91d29b28552f",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/45_kidney_failure_choosing_a_treatment_that_s_r-91d29b28552f"
+    },
+    {
+      "filename": "46_kidney_stones_in_adults.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/46_kidney_stones_in_adults.pdf",
+      "status": "pass",
+      "document_id": "46_kidney_stones_in_adults-e7a912c905d1",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/46_kidney_stones_in_adults-e7a912c905d1"
+    },
+    {
+      "filename": "47_kidney_stones_in_children.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/47_kidney_stones_in_children.pdf",
+      "status": "pass",
+      "document_id": "47_kidney_stones_in_children-5ee75c948c45",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/47_kidney_stones_in_children-5ee75c948c45"
+    },
+    {
+      "filename": "48_porphyria.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/48_porphyria.pdf",
+      "status": "pass",
+      "document_id": "48_porphyria-b3efd6ca931c",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/48_porphyria-b3efd6ca931c"
+    },
+    {
+      "filename": "49_primary_hyperparathyroidism.pdf",
+      "local_path": "/Users/aryanjain/Documents/GitHub/MediAssist/Medical_PDF/49_primary_hyperparathyroidism.pdf",
+      "status": "pass",
+      "document_id": "49_primary_hyperparathyroidism-1609afedd988",
+      "selected_pipeline": "standard",
+      "retrieval_ready": true,
+      "volume_path": "/data/documents/49_primary_hyperparathyroidism-1609afedd988"
+    }
+  ]
+}
