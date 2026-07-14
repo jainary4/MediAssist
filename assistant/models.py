@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -15,10 +15,28 @@ class StrictModel(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
+QueryIntent = Literal[
+    "general_text",
+    "classification_code",
+    "review_body",
+    "figure_value",
+    "scanned_appendix",
+    "maintenance_dose",
+    "induction_dose",
+    "cross_document_dose",
+    "corpus_monitoring_tier",
+    "corpus_formulary_agent",
+    "reverse_registry_code",
+]
+
 
 class RoutePlan(StrictModel):
-    """Describe which deterministic retrieval paths a question requires."""
+    """Describe the deterministic retrieval plan for a question."""
 
+    intent: QueryIntent = Field(
+        default="general_text",
+        description="Principal question category selected by the router.",
+    )
     named_document_ids: list[str] = Field(
         default_factory=list,
         description="Document IDs explicitly identified in the question.",
@@ -29,7 +47,15 @@ class RoutePlan(StrictModel):
     )
     required_facts: list[str] = Field(
         default_factory=list,
-        description="Facts that must be supported before answering.",
+        description="Facts that the final answer must support.",
+    )
+    retrieval_channels: list[str] = Field(
+        default_factory=list,
+        description="Retrieval methods that should be attempted.",
+    )
+    required_evidence_types: list[str] = Field(
+        default_factory=list,
+        description="Evidence types that are mandatory for this intent.",
     )
     requires_metadata: bool = False
     requires_structured_table: bool = False
@@ -67,6 +93,7 @@ class RetrievalTrace(StrictModel):
     semantic_result_count: int = 0
     keyword_result_count: int = 0
     structured_result_count: int = 0
+    footnote_result_count: int = 0
     figure_result_count: int = 0
     reference_result_count: int = 0
     aggregation_result_count: int = 0
