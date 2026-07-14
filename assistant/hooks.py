@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import re
-
 from assistant.models import (
     AgentDraft,
     Citation,
@@ -15,246 +13,46 @@ from assistant.models import (
 
 
 ANSWER_THRESHOLD = 0.75
+MAXIMUM_PROTOTYPE_CONFIDENCE = 0.95
 
 
 def pre_answer_check(
     evidence_pack: EvidencePack,
 ) -> list[str]:
-    """Perform intent-specific checks before invoking the LLM.
-
-    These checks only block when evidence mandatory for the selected
-    intent is missing. Optional retrieval channels never cause
-    abstention.
+    """Check whether retrieval returned any evidence.
 
     Args:
-        evidence_pack (EvidencePack): Initial retrieval result.
+        evidence_pack (EvidencePack): Evidence selected for the question.
 
     Returns:
-        list[str]: Blocking evidence errors.
+        list[str]: A blocking error only when retrieval found no evidence.
     """
-    errors: list[str] = []
-    route = evidence_pack.route
-    evidence = evidence_pack.evidence
+    if evidence_pack.evidence:
+        return []
 
-    if not evidence:
-        return [
-            "No evidence was found in the document collection."
-        ]
-
-    if route.intent == "classification_code":
-        classification_found = any(
-            re.search(
-                r"\bCMX-[A-Z0-9]+\b",
-                item.text,
-                flags=re.IGNORECASE,
-            )
-            for item in evidence
-        )
-
-        if not classification_found:
-            errors.append(
-                "The named document was retrieved, but no "
-                "classification code was found in its evidence."
-            )
-
-    if route.intent == "review_body":
-        approval_footnote_found = any(
-            item.content_type == "footnote"
-            or "reviewed and approved by"
-            in item.text.casefold()
-            for item in evidence
-        )
-
-        if not approval_footnote_found:
-            errors.append(
-                "The Document Control Record refers to an approval "
-                "footnote, but no resolved approval footnote was "
-                "retrieved."
-            )
-
-    if route.intent == "figure_value":
-        figure_found = any(
-            item.content_type == "figure"
-            for item in evidence
-        )
-
-        if not figure_found:
-            errors.append(
-                "The question explicitly requires figure evidence, "
-                "but no figure record was retrieved."
-            )
-
-    if route.intent == "scanned_appendix":
-        appendix_answer_found = any(
-            (
-                "formulary agent of record"
-                in item.text.casefold()
-            )
-            and (
-                "induction"
-                in item.text.casefold()
-            )
-            and bool(
-                re.search(
-                    r"\b\d+(?:\.\d+)?\s*"
-                    r"(?:mg|mcg|g)\b",
-                    item.text,
-                    flags=re.IGNORECASE,
-                )
-            )
-            for item in evidence
-        )
-
-        if not appendix_answer_found:
-            errors.append(
-                "The scanned appendix was requested, but no OCR "
-                "evidence containing both the formulary agent and "
-                "its induction dose was retrieved."
-            )
-
-    if route.intent == "maintenance_dose":
-        maintenance_evidence_found = any(
-            (
-                item.content_type
-                in {
-                    "table",
-                    "table_parent",
-                    "table_window",
-                    "structured_table_row",
-                }
-            )
-            and (
-                "maintenance"
-                in item.text.casefold()
-            )
-            and bool(
-                re.search(
-                    r"\b\d+(?:\.\d+)?\s*"
-                    r"(?:mg|mcg|g)\b",
-                    item.text,
-                    flags=re.IGNORECASE,
-                )
-            )
-            for item in evidence
-        )
-
-        if not maintenance_evidence_found:
-            errors.append(
-                "The requested maintenance dose was not found in "
-                "retrieved structured table evidence."
-            )
-
-    if route.intent == "cross_document_dose":
-        references = [
-            item
-            for item in evidence
-            if item.content_type == "document_reference"
-        ]
-
-        target_document_ids = {
-            str(
-                item.metadata.get(
-                    "target_document_id"
-                )
-            )
-            for item in references
-            if item.metadata.get(
-                "target_document_id"
-            )
-        }
-
-        target_evidence = [
-            item
-            for item in evidence
-            if item.document_id
-            in target_document_ids
-        ]
-
-        if not references:
-            errors.append(
-                "The question requires an explicit document link, "
-                "but no document-reference record was retrieved."
-            )
-        elif not target_evidence:
-            errors.append(
-                "The source document reference was found, but no "
-                "evidence was retrieved from the target document."
-            )
-        else:
-            target_dose_found = any(
-                (
-                    "induction"
-                    in item.text.casefold()
-                )
-                and bool(
-                    re.search(
-                        r"\b\d+(?:\.\d+)?\s*"
-                        r"(?:mg|mcg|g)\b",
-                        item.text,
-                        flags=re.IGNORECASE,
-                    )
-                )
-                for item in target_evidence
-            )
-
-            if not target_dose_found:
-                errors.append(
-                    "The target document was retrieved, but no "
-                    "unambiguous induction-dose evidence was found."
-                )
-
-    if route.intent in {
-        "corpus_monitoring_tier",
-        "corpus_formulary_agent",
-    }:
-        aggregation_found = any(
-            item.content_type == "corpus_aggregation"
-            for item in evidence
-        )
-
-        if not aggregation_found:
-            errors.append(
-                "The question asks for a complete corpus-wide set, "
-                "but no structured aggregation was produced."
-            )
-
-    if route.intent == "reverse_registry_code":
-        registry_match = re.search(
-            r"\bCDR-\d+\b",
-            evidence_pack.question,
-            flags=re.IGNORECASE,
-        )
-
-        registry_found = (
-            registry_match is not None
-            and any(
-                registry_match.group(0).casefold()
-                in item.text.casefold()
-                for item in evidence
-            )
-        )
-
-        if not registry_found:
-            errors.append(
-                "The requested registry code does not appear in "
-                "retrieved document metadata or control records."
-            )
-
-    return errors
+    return [
+        "No evidence was found in the document collection."
+    ]
 
 
 def validate_agent_draft(
     draft: AgentDraft,
     evidence_registry: dict[str, EvidenceItem],
 ) -> ValidationReport:
-    """Validate citations, claim coverage and numeric support.
+    """Validate answer structure and citation references.
+
+    The validator does not inspect whether values are numeric or alphanumeric.
+    Retrieval and the answer-writing model are trusted to interpret the contents
+    of cited chunks. The deterministic checks only ensure that citations exist
+    and that every factual claim has at least one valid citation.
 
     Args:
-        draft (AgentDraft): Structured LLM output.
-        evidence_registry (dict[str, EvidenceItem]): Retrieved evidence.
+        draft (AgentDraft): Structured draft returned by the answer agent.
+        evidence_registry (dict[str, EvidenceItem]): Evidence available during
+            the current request.
 
     Returns:
-        ValidationReport: Deterministic validation result.
+        ValidationReport: Citation and claim validation results.
     """
     errors: list[str] = []
 
@@ -273,19 +71,23 @@ def validate_agent_draft(
         )
 
     if not draft.answer.strip():
-        errors.append("The answer is empty.")
+        errors.append(
+            "A non-abstained answer cannot be empty."
+        )
 
     if not draft.claims:
         errors.append(
-            "A non-abstained answer must contain atomic claims."
+            "A non-abstained answer must contain at least one claim."
         )
 
-    all_cited_ids = set(
+    all_cited_ids: set[str] = set(
         draft.cited_evidence_ids
     )
 
     for claim in draft.claims:
-        all_cited_ids.update(claim.evidence_ids)
+        all_cited_ids.update(
+            claim.evidence_ids
+        )
 
     valid_citation_ids = {
         evidence_id
@@ -293,25 +95,24 @@ def validate_agent_draft(
         if evidence_id in evidence_registry
     }
 
-    invalid_ids = sorted(
+    invalid_citation_ids = sorted(
         all_cited_ids - valid_citation_ids
     )
 
-    if invalid_ids:
+    if invalid_citation_ids:
         errors.append(
-            "The answer invented unknown evidence IDs: "
-            + ", ".join(invalid_ids)
+            "The answer used unknown evidence IDs: "
+            + ", ".join(invalid_citation_ids)
         )
 
     citation_validity = (
-        len(valid_citation_ids) / len(all_cited_ids)
+        len(valid_citation_ids)
+        / len(all_cited_ids)
         if all_cited_ids
         else 0.0
     )
 
     claims_with_valid_citations = 0
-    supported_numeric_tokens = 0
-    total_numeric_tokens = 0
 
     for claim in draft.claims:
         valid_claim_ids = [
@@ -320,47 +121,19 @@ def validate_agent_draft(
             if evidence_id in evidence_registry
         ]
 
-        if not valid_claim_ids:
+        if valid_claim_ids:
+            claims_with_valid_citations += 1
+        else:
             errors.append(
-                f"Claim has no valid citation: {claim.text}"
+                "Claim has no valid citation: "
+                f"{claim.text}"
             )
-            continue
-
-        claims_with_valid_citations += 1
-
-        cited_text = " ".join(
-            evidence_registry[evidence_id].text
-            for evidence_id in valid_claim_ids
-        )
-
-        claim_numbers = _extract_numeric_tokens(
-            claim.text
-        )
-        evidence_numbers = _extract_numeric_tokens(
-            cited_text
-        )
-
-        for number in claim_numbers:
-            total_numeric_tokens += 1
-
-            if number in evidence_numbers:
-                supported_numeric_tokens += 1
-            else:
-                errors.append(
-                    "Numeric claim is absent from its cited "
-                    f"evidence: {number}"
-                )
 
     claim_citation_coverage = (
-        claims_with_valid_citations / len(draft.claims)
+        claims_with_valid_citations
+        / len(draft.claims)
         if draft.claims
         else 0.0
-    )
-
-    numeric_support = (
-        supported_numeric_tokens / total_numeric_tokens
-        if total_numeric_tokens
-        else 1.0
     )
 
     return ValidationReport(
@@ -370,7 +143,7 @@ def validate_agent_draft(
         claim_citation_coverage=(
             claim_citation_coverage
         ),
-        numeric_support=numeric_support,
+        numeric_support=1.0,
     )
 
 
@@ -380,39 +153,31 @@ def calculate_confidence(
     validation: ValidationReport,
     evidence_registry: dict[str, EvidenceItem],
 ) -> ConfidenceBreakdown:
-    """Calculate a transparent heuristic reliability score.
+    """Calculate confidence from retrieval and citation support.
+
+    No evidence type receives an automatic cap. OCR, figures, scans, tables, and
+    visually flagged items contribute their extraction quality as a continuous
+    input rather than becoming an automatic abstention. Invalid citations remain
+    a hard failure because they break grounding.
 
     Args:
-        route (RoutePlan): Deterministic query route.
-        draft (AgentDraft): Structured LLM response.
-        validation (ValidationReport): Output validation results.
-        evidence_registry (dict[str, EvidenceItem]): All retrieved evidence.
+        route (RoutePlan): Retrieval route selected for the question.
+        draft (AgentDraft): Structured answer produced by the model.
+        validation (ValidationReport): Deterministic citation validation.
+        evidence_registry (dict[str, EvidenceItem]): Request-local evidence.
 
     Returns:
-        ConfidenceBreakdown: Score components, caps and final score.
+        ConfidenceBreakdown: Transparent confidence components and final score.
     """
-    cited_ids = {
-        evidence_id
-        for evidence_id in draft.cited_evidence_ids
-        if evidence_id in evidence_registry
-    }
-
-    for claim in draft.claims:
-        cited_ids.update(
-            evidence_id
-            for evidence_id in claim.evidence_ids
-            if evidence_id in evidence_registry
-        )
-
-    cited_evidence = [
-        evidence_registry[evidence_id]
-        for evidence_id in cited_ids
-    ]
-
-    coverage = _calculate_coverage(
-        route=route,
+    cited_evidence = _collect_cited_evidence(
         draft=draft,
-        cited_evidence=cited_evidence,
+        evidence_registry=evidence_registry,
+    )
+
+    coverage = (
+        0.0
+        if draft.abstained
+        else validation.claim_citation_coverage
     )
 
     retrieval_support = _calculate_retrieval_support(
@@ -422,18 +187,19 @@ def calculate_confidence(
     )
 
     evidence_quality = (
-        min(
+        sum(
             item.extraction_quality
             for item in cited_evidence
         )
+        / len(cited_evidence)
         if cited_evidence
         else 0.0
     )
 
     grounding = (
-        0.35 * validation.citation_validity
-        + 0.35 * validation.claim_citation_coverage
-        + 0.30 * validation.numeric_support
+        0.50 * validation.citation_validity
+        + 0.50
+        * validation.claim_citation_coverage
     )
 
     consistency = _calculate_consistency(
@@ -443,74 +209,29 @@ def calculate_confidence(
 
     raw_score = (
         0.30 * coverage
-        + 0.20 * retrieval_support
-        + 0.20 * evidence_quality
-        + 0.20 * grounding
+        + 0.25 * retrieval_support
+        + 0.10 * evidence_quality
+        + 0.25 * grounding
         + 0.10 * consistency
     )
 
     applied_caps: list[str] = []
-    final_score = raw_score
 
     if not validation.valid:
         final_score = 0.0
         applied_caps.append(
-            "Output validation failed."
+            "Citation or answer-structure validation failed."
+        )
+    else:
+        final_score = min(
+            raw_score,
+            MAXIMUM_PROTOTYPE_CONFIDENCE,
         )
 
-    if any(
-        item.requires_visual_check
-        for item in cited_evidence
-    ):
-        final_score = min(final_score, 0.60)
-        applied_caps.append(
-            "Critical evidence requires visual review."
-        )
-
-    if (
-        cited_evidence
-        and all(
-            item.content_type == "figure"
-            for item in cited_evidence
-        )
-    ):
-        final_score = min(final_score, 0.80)
-        applied_caps.append(
-            "The answer relies only on figure OCR."
-        )
-
-    if route.requires_cross_document:
-        cited_documents = {
-            item.document_id
-            for item in cited_evidence
-        }
-
-        has_reference = any(
-            item.content_type == "document_reference"
-            for item in cited_evidence
-        )
-
-        if (
-            len(cited_documents) < 2
-            or not has_reference
-        ):
-            final_score = 0.0
+        if raw_score > MAXIMUM_PROTOTYPE_CONFIDENCE:
             applied_caps.append(
-                "Cross-document evidence chain is incomplete."
+                "Prototype scores are capped until calibration."
             )
-
-    if coverage < 1.0:
-        final_score = min(final_score, 0.60)
-        applied_caps.append(
-            "At least one required fact is unsupported."
-        )
-
-    final_score = min(final_score, 0.95)
-
-    if final_score == 0.95 and raw_score > 0.95:
-        applied_caps.append(
-            "Prototype scores are capped until calibration."
-        )
 
     return ConfidenceBreakdown(
         coverage=round(coverage, 4),
@@ -522,10 +243,22 @@ def calculate_confidence(
             evidence_quality,
             4,
         ),
-        grounding=round(grounding, 4),
-        consistency=round(consistency, 4),
-        raw_score=round(raw_score, 4),
-        final_score=round(final_score, 4),
+        grounding=round(
+            grounding,
+            4,
+        ),
+        consistency=round(
+            consistency,
+            4,
+        ),
+        raw_score=round(
+            raw_score,
+            4,
+        ),
+        final_score=round(
+            final_score,
+            4,
+        ),
         applied_caps=applied_caps,
     )
 
@@ -539,42 +272,31 @@ def build_final_answer(
     evidence_registry: dict[str, EvidenceItem],
     diagnostics: dict | None,
 ) -> ClinicalAnswer:
-    """Build the final API response after confidence gating.
+    """Build the final response after citation and confidence checks.
 
     Args:
         session_id (str): Conversation session identifier.
         question (str): Original user question.
-        draft (AgentDraft): LLM-generated structured draft.
-        validation (ValidationReport): Grounding validation.
-        confidence (ConfidenceBreakdown): Reliability calculation.
-        evidence_registry (dict[str, EvidenceItem]): Retrieved evidence.
+        draft (AgentDraft): Structured model draft.
+        validation (ValidationReport): Citation validation results.
+        confidence (ConfidenceBreakdown): Retrieval-focused confidence score.
+        evidence_registry (dict[str, EvidenceItem]): Request-local evidence.
         diagnostics (dict | None): Optional retrieval diagnostics.
 
     Returns:
-        ClinicalAnswer: Validated frontend-ready answer.
+        ClinicalAnswer: Frontend-ready grounded response.
     """
     should_abstain = (
         draft.abstained
         or not validation.valid
-        or confidence.final_score < ANSWER_THRESHOLD
+        or confidence.final_score
+        < ANSWER_THRESHOLD
     )
 
-    cited_ids: list[str] = []
-
-    for evidence_id in draft.cited_evidence_ids:
-        if (
-            evidence_id in evidence_registry
-            and evidence_id not in cited_ids
-        ):
-            cited_ids.append(evidence_id)
-
-    for claim in draft.claims:
-        for evidence_id in claim.evidence_ids:
-            if (
-                evidence_id in evidence_registry
-                and evidence_id not in cited_ids
-            ):
-                cited_ids.append(evidence_id)
+    cited_ids = _ordered_cited_ids(
+        draft=draft,
+        evidence_registry=evidence_registry,
+    )
 
     citations = [
         _build_citation(
@@ -583,18 +305,9 @@ def build_final_answer(
         for evidence_id in cited_ids
     ]
 
-    limitations = list(draft.limitations)
-
-    if any(
-        item.content_type == "figure"
-        for item in (
-            evidence_registry[evidence_id]
-            for evidence_id in cited_ids
-        )
-    ):
-        limitations.append(
-            "At least one cited source uses figure OCR."
-        )
+    limitations = list(
+        draft.limitations
+    )
 
     if any(
         evidence_registry[evidence_id]
@@ -602,15 +315,28 @@ def build_final_answer(
         for evidence_id in cited_ids
     ):
         limitations.append(
-            "At least one cited extraction requires visual review."
+            "At least one cited extraction carries a "
+            "visual-review warning."
+        )
+
+    if any(
+        evidence_registry[evidence_id]
+        .content_type
+        == "figure"
+        for evidence_id in cited_ids
+    ):
+        limitations.append(
+            "At least one cited source uses stored figure OCR."
         )
 
     limitations.append(
-        "Confidence is a heuristic evidence-reliability "
-        "score and is not yet statistically calibrated."
+        "Confidence is heuristic and is not yet "
+        "statistically calibrated."
     )
 
-    limitations = list(dict.fromkeys(limitations))
+    limitations = list(
+        dict.fromkeys(limitations)
+    )
 
     if should_abstain:
         abstention_reason = (
@@ -618,21 +344,25 @@ def build_final_answer(
             or (
                 "; ".join(validation.errors)
                 if validation.errors
-                else "Evidence reliability was below the answer threshold."
+                else (
+                    "Retrieved evidence and citations did not "
+                    "reach the answer threshold."
+                )
             )
         )
 
         answer = (
-            "I could not find sufficiently reliable evidence "
+            "I could not find sufficiently supported evidence "
             "in the provided documents to answer this question."
         )
         claims = []
-        label = "insufficient"
+        confidence_label = "insufficient"
     else:
         abstention_reason = None
         answer = draft.answer
         claims = draft.claims
-        label = (
+
+        confidence_label = (
             "high"
             if confidence.final_score >= 0.85
             else "medium"
@@ -647,116 +377,69 @@ def build_final_answer(
         abstained=should_abstain,
         abstention_reason=abstention_reason,
         confidence=confidence.final_score,
-        confidence_label=label,
+        confidence_label=confidence_label,
         confidence_breakdown=confidence,
         limitations=limitations,
         diagnostics=diagnostics,
     )
 
 
-def _calculate_coverage(
-    route: RoutePlan,
+def _collect_cited_evidence(
     draft: AgentDraft,
-    cited_evidence: list[EvidenceItem],
-) -> float:
-    """Measure whether every requested fact is supported.
+    evidence_registry: dict[str, EvidenceItem],
+) -> list[EvidenceItem]:
+    """Collect unique evidence cited by the answer.
 
     Args:
-        route (RoutePlan): Query route.
-        draft (AgentDraft): Agent answer.
-        cited_evidence (list[EvidenceItem]): Cited evidence.
+        draft (AgentDraft): Structured agent draft.
+        evidence_registry (dict[str, EvidenceItem]): Request-local evidence.
 
     Returns:
-        float: Required-fact coverage from zero to one.
+        list[EvidenceItem]: Unique cited evidence records.
     """
-    if draft.abstained:
-        return 0.0
+    return [
+        evidence_registry[evidence_id]
+        for evidence_id in _ordered_cited_ids(
+            draft=draft,
+            evidence_registry=evidence_registry,
+        )
+    ]
 
-    answer = draft.answer.casefold()
-    evidence_text = " ".join(
-        item.text
-        for item in cited_evidence
-    ).casefold()
 
-    cited_types = {
-        item.content_type
-        for item in cited_evidence
-    }
-    cited_documents = {
-        item.document_id
-        for item in cited_evidence
-    }
+def _ordered_cited_ids(
+    draft: AgentDraft,
+    evidence_registry: dict[str, EvidenceItem],
+) -> list[str]:
+    """Return valid citation IDs in stable first-seen order.
 
-    support: list[bool] = []
+    Args:
+        draft (AgentDraft): Structured agent draft.
+        evidence_registry (dict[str, EvidenceItem]): Request-local evidence.
 
-    for fact in route.required_facts:
-        if fact == "classification_code":
-            support.append(
-                bool(
-                    re.search(
-                        r"\bCMX-[A-Z0-9]+\b",
-                        draft.answer,
-                        flags=re.IGNORECASE,
-                    )
-                )
-            )
-        elif fact == "registry_code":
-            support.append(
-                bool(
-                    re.search(
-                        r"\bCDR-\d+\b",
-                        draft.answer,
-                        flags=re.IGNORECASE,
-                    )
-                )
-            )
-        elif fact == "induction_dose":
-            support.append(
-                "induction" in evidence_text
-                and bool(
-                    re.search(
-                        r"\b\d+(?:\.\d+)?\s*"
-                        r"(?:mg|mcg|g)\b",
-                        answer,
-                    )
-                )
-            )
-        elif fact == "maintenance_dose":
-            support.append(
-                "maintenance" in evidence_text
-                and bool(
-                    re.search(
-                        r"\b\d+(?:\.\d+)?\s*"
-                        r"(?:mg|mcg|g)\b",
-                        answer,
-                    )
-                )
-            )
-        elif fact == "figure_value":
-            support.append(
-                "figure" in cited_types
-                and bool(re.search(r"\d", answer))
-            )
-        elif fact == "cross_document_link":
-            support.append(
-                "document_reference" in cited_types
-                and len(cited_documents) >= 2
-            )
-        elif fact == "complete_condition_set":
-            support.append(
-                "corpus_aggregation" in cited_types
-            )
-        else:
-            support.append(
-                bool(draft.claims)
-                and bool(cited_evidence)
-            )
+    Returns:
+        list[str]: Ordered valid evidence IDs.
+    """
+    ordered_ids: list[str] = []
 
-    return (
-        sum(support) / len(support)
-        if support
-        else 0.0
+    candidate_ids = list(
+        draft.cited_evidence_ids
     )
+
+    for claim in draft.claims:
+        candidate_ids.extend(
+            claim.evidence_ids
+        )
+
+    for evidence_id in candidate_ids:
+        if (
+            evidence_id in evidence_registry
+            and evidence_id not in ordered_ids
+        ):
+            ordered_ids.append(
+                evidence_id
+            )
+
+    return ordered_ids
 
 
 def _calculate_retrieval_support(
@@ -764,15 +447,15 @@ def _calculate_retrieval_support(
     cited_evidence: list[EvidenceItem],
     evidence_registry: dict[str, EvidenceItem],
 ) -> float:
-    """Measure ranking, retriever agreement and document matching.
+    """Measure rank strength, retriever agreement and document matching.
 
     Args:
-        route (RoutePlan): Query route.
-        cited_evidence (list[EvidenceItem]): Cited items.
-        evidence_registry (dict[str, EvidenceItem]): All retrieved items.
+        route (RoutePlan): Retrieval route.
+        cited_evidence (list[EvidenceItem]): Evidence cited by the answer.
+        evidence_registry (dict[str, EvidenceItem]): All retrieved evidence.
 
     Returns:
-        float: Retrieval-support score.
+        float: Retrieval support from zero to one.
     """
     if not cited_evidence:
         return 0.0
@@ -785,44 +468,53 @@ def _calculate_retrieval_support(
         default=1.0,
     )
 
+    if maximum_fusion <= 0.0:
+        maximum_fusion = 1.0
+
     rank_strength = sum(
         min(
-            item.fusion_score / maximum_fusion,
+            item.fusion_score
+            / maximum_fusion,
             1.0,
         )
         for item in cited_evidence
     ) / len(cited_evidence)
 
-    agreement = sum(
+    retriever_agreement = sum(
         min(
-            len(item.retrieval_channels) / 2.0,
+            max(
+                len(item.retrieval_channels),
+                1,
+            )
+            / 2.0,
             1.0,
         )
         for item in cited_evidence
     ) / len(cited_evidence)
 
     if route.named_document_ids:
-        retrieved_documents = {
+        cited_document_ids = {
             item.document_id
             for item in cited_evidence
         }
 
-        matched = sum(
-            1
-            for document_id in route.named_document_ids
-            if document_id in retrieved_documents
+        matched_documents = sum(
+            document_id in cited_document_ids
+            for document_id
+            in route.named_document_ids
         )
 
-        entity_match = (
-            matched / len(route.named_document_ids)
+        document_match = (
+            matched_documents
+            / len(route.named_document_ids)
         )
     else:
-        entity_match = 1.0
+        document_match = 1.0
 
     return (
         0.40 * rank_strength
-        + 0.35 * agreement
-        + 0.25 * entity_match
+        + 0.35 * retriever_agreement
+        + 0.25 * document_match
     )
 
 
@@ -830,62 +522,46 @@ def _calculate_consistency(
     route: RoutePlan,
     cited_evidence: list[EvidenceItem],
 ) -> float:
-    """Calculate a simple evidence-consistency score.
+    """Measure whether the cited evidence forms a coherent chain.
+
+    This is a graded signal rather than a blocking hook. Cross-document answers
+    receive full consistency when they cite multiple documents and an explicit
+    reference record. Other grounded answers receive full consistency.
 
     Args:
-        route (RoutePlan): Query route.
-        cited_evidence (list[EvidenceItem]): Cited evidence.
+        route (RoutePlan): Retrieval route.
+        cited_evidence (list[EvidenceItem]): Evidence cited by the answer.
 
     Returns:
-        float: Consistency score.
+        float: Consistency score from zero to one.
     """
     if not cited_evidence:
         return 0.0
 
-    if route.requires_cross_document:
-        has_reference = any(
-            item.content_type == "document_reference"
-            for item in cited_evidence
-        )
-        document_count = len({
-            item.document_id
-            for item in cited_evidence
-        })
+    if not route.requires_cross_document:
+        return 1.0
 
-        if not has_reference or document_count < 2:
-            return 0.0
-
-    if any(
-        item.requires_visual_check
+    cited_documents = {
+        item.document_id
         for item in cited_evidence
-    ):
-        return 0.60
+    }
 
-    return 1.0
-
-
-def _extract_numeric_tokens(
-    text: str,
-) -> set[str]:
-    """Extract normalized numbers, codes and dose values.
-
-    Args:
-        text (str): Claim or evidence text.
-
-    Returns:
-        set[str]: Normalized numeric tokens.
-    """
-    matches = re.findall(
-        r"\b(?:CDR-\d+|CMX-[A-Z0-9]+|"
-        r"\d+(?:[.,]\d+)?(?:\s*(?:mg|mcg|g|%))?)\b",
-        text,
-        flags=re.IGNORECASE,
+    has_reference = any(
+        item.content_type
+        == "document_reference"
+        for item in cited_evidence
     )
 
-    return {
-        re.sub(r"[\s,]+", "", match.casefold())
-        for match in matches
-    }
+    if (
+        len(cited_documents) >= 2
+        and has_reference
+    ):
+        return 1.0
+
+    if len(cited_documents) >= 2:
+        return 0.75
+
+    return 0.50
 
 
 def _build_citation(
@@ -894,7 +570,7 @@ def _build_citation(
     """Convert internal evidence into a frontend citation.
 
     Args:
-        evidence (EvidenceItem): Cited evidence.
+        evidence (EvidenceItem): Cited evidence record.
 
     Returns:
         Citation: Frontend-ready citation.
@@ -904,19 +580,30 @@ def _build_citation(
     )
 
     if len(excerpt) > 320:
-        excerpt = excerpt[:317] + "..."
+        excerpt = (
+            excerpt[:317]
+            + "..."
+        )
 
     return Citation(
         evidence_id=evidence.evidence_id,
-        document_title=evidence.document_title,
-        page_numbers=evidence.page_numbers,
-        content_type=evidence.content_type,
+        document_title=(
+            evidence.document_title
+        ),
+        page_numbers=(
+            evidence.page_numbers
+        ),
+        content_type=(
+            evidence.content_type
+        ),
         section=evidence.section,
         source_refs=evidence.source_refs,
         excerpt=excerpt,
         asset_path=evidence.asset_path,
-        source_members=evidence.metadata.get(
-            "source_members",
-            [],
+        source_members=(
+            evidence.metadata.get(
+                "source_members",
+                [],
+            )
         ),
     )

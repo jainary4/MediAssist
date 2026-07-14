@@ -1,7 +1,7 @@
 # Clinical QA Evaluation Answers
 
-- Run ID: `evaluation-20260714T081940Z-4aeda815`
-- Created at: `2026-07-14T08:21:52.790741+00:00`
+- Run ID: `evaluation-20260714T134805Z-2a2071f4`
+- Created at: `2026-07-14T13:49:37.350718+00:00`
 - Questions: 40
 
 ## Question 1
@@ -12,32 +12,27 @@
 
 **Answer:**
 
-Short bowel syndrome is a group of problems caused by poor absorption of nutrients, usually occurring after large portions of the small intestine are lost or damaged; people with it cannot absorb enough water, vitamins, minerals, protein, fat, calories, and other nutrients, and severity ranges from mild to severe depending on how well the small intestine works.
+Short bowel syndrome is a group of problems caused by poor absorption of nutrients, typically occurring after removal or severe damage of large portions of the small intestine; people with the condition cannot absorb enough water, vitamins, minerals, protein, fat, calories, and other nutrients, and which nutrients are affected depends on which section of the small intestine is damaged or removed.
 
 **Confidence:** 0.95 (high)
 
 **Citations:**
 
-1. Short Bowel Syndrome — page 1 — Abstract
-
-   > Short bowel syndrome is a group of problems related to poor absorption of nutrients. Short bowel syndrome typically occurs in people who have - had at least half of their small intestine removed and sometimes all or part of their large intestine removed - significant damage of the small intestine - poor motility, or...
-
-2. Short Bowel Syndrome — page 4 — What to do for Short Bowel Syndrome?
+1. Short Bowel Syndrome — page 4 — What to do for Short Bowel Syndrome?
 
    > - Short bowel syndrome is a group of problems related to poor absorption of nutrients. - People with short bowel syndrome cannot absorb enough water, vitamins, minerals, protein, fat, calories, and other nutrients from food. - The main symptom of short bowel syndrome is diarrhealoose, watery stools. Diarrhea can lea...
+
+2. Short Bowel Syndrome — page 1 — Abstract
+
+   > Short bowel syndrome is a group of problems related to poor absorption of nutrients. Short bowel syndrome typically occurs in people who have - had at least half of their small intestine removed and sometimes all or part of their large intestine removed - significant damage of the small intestine - poor motility, or...
 
 3. Short Bowel Syndrome — page 4 — What is (are) Short Bowel Syndrome?
 
    > Intestinal adaptation is a process that usually occurs in children after removal of a large portion of their small intestine. The remaining small intestine goes through a period of adaptation and grows to increase its ability to absorb nutrients. Intestinal adaptation can take up to 2 years to occur, and during this...
 
-4. Short Bowel Syndrome — pages 3, 4 — What are the treatments for Short Bowel Syndrome?
-
-   > nutrition and normal eating stimulate the remaining intestine to work better and may allow patients to discontinue parenteral nutrition. Some patients with severe short bowel syndrome require parenteral nutrition indefinitely or surgery.
-
 **Limitations:**
 
-- All information is sourced from the provided 'Short Bowel Syndrome' document; other details (e.g., precise anatomical length thresholds beyond 'at least half') are not provided in the evidence.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -49,7 +44,7 @@ Short bowel syndrome is a group of problems caused by poor absorption of nutrien
 
 **Answer:**
 
-The document states that causes probably differ by neuropathy type and that nerve damage is likely due to a combination of factors: metabolic (high blood glucose, long duration of diabetes, abnormal blood fat levels, possibly low insulin), neurovascular (damage to blood vessels supplying nerves), autoimmune (inflammation in nerves), mechanical injury (e.g., carpal tunnel syndrome), inherited susceptibility, and lifestyle factors (smoking or alcohol use).
+Causes vary by type; nerve damage is linked to prolonged high blood glucose and is likely due to a combination of metabolic, neurovascular, autoimmune, mechanical, inherited, and lifestyle factors.
 
 **Confidence:** 0.95 (high)
 
@@ -61,7 +56,8 @@ The document states that causes probably differ by neuropathy type and that nerv
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Answer is limited to the provided document section 'What causes Diabetic Neuropathies: The Nerve Damage of Diabetes' (evidence_id text-37ebab4c17f4193b).
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -73,7 +69,7 @@ The document states that causes probably differ by neuropathy type and that nerv
 
 **Answer:**
 
-Breast cancer is a disease in which malignant (cancer) cells form in the tissues of the breast. The breast is made up of lobes, lobules, and ducts; the most common type of breast cancer is ductal carcinoma, which begins in the cells of the ducts.
+Breast cancer is a disease in which malignant (cancer) cells form in the tissues of the breast. The breast is made up of lobes, lobules, and ducts; the most common type of breast cancer is ductal carcinoma (which begins in the cells of the ducts), and cancer that begins in the lobes or lobules is called lobular carcinoma.
 
 **Confidence:** 0.95 (high)
 
@@ -89,7 +85,7 @@ Breast cancer is a disease in which malignant (cancer) cells form in the tissues
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -101,7 +97,7 @@ Breast cancer is a disease in which malignant (cancer) cells form in the tissues
 
 **Answer:**
 
-Adult non-Hodgkin lymphoma is a disease in which malignant (cancer) cells form in the lymph system.
+Adult non-Hodgkin lymphoma is a disease in which malignant (cancer) cells form in the lymph system. Non-Hodgkin lymphoma can be indolent (slow-growing) or aggressive (fast-growing).
 
 **Confidence:** 0.95 (high)
 
@@ -111,9 +107,13 @@ Adult non-Hodgkin lymphoma is a disease in which malignant (cancer) cells form i
 
    > Key Points - Adult non-Hodgkin lymphoma is a disease in which malignant (cancer) cells form in the lymph system. - The major types of lymphoma are Hodgkin lymphoma and non-Hodgkin lymphoma. - Non-Hodgkin lymphoma can be indolent or aggressive. - Age, gender, and a weakened immune system can affect the risk of adult ...
 
+2. Adult Non-Hodgkin Lymphoma — pages 1, 2, 3 — 1. Overview
+
+   > lymphoma, see the following PDQ summaries: - Adult Acute Lymphoblastic Leukemia Treatment (lymphoblastic lymphoma) - Adult Hodgkin Lymphoma Treatment - AIDS-Related Lymphoma Treatment - Chronic Lymphocytic Leukemia Treatment (small lymphocytic lymphoma) - Mycosis Fungoides and the Szary Syndrome Treatment (cutaneous...
+
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -125,9 +125,9 @@ Adult non-Hodgkin lymphoma is a disease in which malignant (cancer) cells form i
 
 **Answer:**
 
-Overweight and obesity are terms for body weight that is greater than what is considered healthy for a given height. The most useful measure is body mass index (BMI), which is calculated from your height and weight.
+Overweight and obesity are terms for body weight that is greater than what is considered healthy for a given height. The most useful measure of overweight and obesity is body mass index (BMI), which is calculated from height and weight; BMI is an estimate of body fat and a good gauge of disease risk.
 
-**Confidence:** 0.90 (high)
+**Confidence:** 0.89 (high)
 
 **Citations:**
 
@@ -141,7 +141,8 @@ Overweight and obesity are terms for body weight that is greater than what is co
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Answer is limited to the information contained in the provided "Overweight and Obesity" document.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -153,9 +154,9 @@ Overweight and obesity are terms for body weight that is greater than what is co
 
 **Answer:**
 
-Atrial fibrillation (AF) is the most common type of arrhythmia: a problem with the heart's rate or rhythm in which rapid, disorganized electrical signals cause the heart's two upper chambers (atria) to fibrillate (contract very fast and irregularly). In AF, blood can pool in the atria and is not pumped completely into the ventricles, so the heart's upper and lower chambers do not work together as they should. AF can increase the risk of stroke and in some people can cause chest pain or heart failure.
+Atrial fibrillation (AF) is the most common type of arrhythmia in which rapid, disorganized electrical signals cause the heart’s upper chambers (the atria) to fibrillate (contract very fast and irregularly); this leads to poor atrial emptying with blood pooling and an increased risk of stroke. AF can be intermittent, recurrent, ongoing, or sometimes permanent, and may cause symptoms such as chest pain or heart failure when rapid.
 
-**Confidence:** 0.90 (high)
+**Confidence:** 0.92 (high)
 
 **Citations:**
 
@@ -163,9 +164,21 @@ Atrial fibrillation (AF) is the most common type of arrhythmia: a problem with t
 
    > Atrial fibrillation (A-tre-al fi-bri-LA-shun), or AF, is the most common type of arrhythmia (ah-RITH-me-ah). An arrhythmia is a problem with the rate or rhythm of the heartbeat. During an arrhythmia, the heart can beat too fast, too slow, or with an irregular rhythm. AF occurs if rapid, disorganized electrical signa...
 
+2. Atrial Fibrillation — page 2 — What are the symptoms of Atrial Fibrillation?
+
+   > Atrial fibrillation (AF) usually causes the heart's lower chambers, the ventricles, to contract faster than normal. When this happens, the ventricles can't completely fill with blood. Thus, they may not be able to pump enough blood to the lungs and body. This can lead to signs and symptoms, such as: Palpitations (fe...
+
+3. Atrial Fibrillation — page 1 — Abstract
+
+   > AF may happen rarely or every now and then, or it may become an ongoing or long-term heart problem that lasts for years. Understanding the Heart's Electrical System To understand AF, it helps
+
+4. Atrial Fibrillation — page 1 — Abstract
+
+   > If this happens, blood isn't pumped into the ventricles as well as it should be. Also, the amount of blood pumped out of the ventricles to the body is based on the random atrial beats. The body may get rapid, small amounts of blood and occasional larger amounts of blood. The amount will depend on how much blood has ...
+
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -193,8 +206,7 @@ Complications include hematuria (blood in the urine), kidney stones, and urinary
 
 **Limitations:**
 
-- All claims are drawn from the provided "Medullary Sponge Kidney" document (extraction_quality 0.88). No additional sources were used.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -206,7 +218,7 @@ Complications include hematuria (blood in the urine), kidney stones, and urinary
 
 **Answer:**
 
-Foodborne illnesses are infections or irritations of the gastrointestinal (GI) tract caused by food or beverages that contain harmful bacteria, parasites, viruses, or chemicals (common symptoms include vomiting, diarrhea, abdominal pain, fever, and chills).
+Foodborne illnesses are infections or irritations of the gastrointestinal (GI) tract caused by food or beverages that contain harmful bacteria, parasites, viruses, or chemicals. The GI tract is a series of hollow organs joined in a long, twisting tube from the mouth to the anus. (Source: text-293e407f3ca739dd)
 
 **Confidence:** 0.95 (high)
 
@@ -218,7 +230,7 @@ Foodborne illnesses are infections or irritations of the gastrointestinal (GI) t
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -230,7 +242,7 @@ Foodborne illnesses are infections or irritations of the gastrointestinal (GI) t
 
 **Answer:**
 
-The classification code is CMX-NI120.
+CMX-NI120.
 
 **Confidence:** 0.95 (high)
 
@@ -242,7 +254,7 @@ The classification code is CMX-NI120.
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -264,13 +276,9 @@ The classification code for the Retinoblastoma monograph is CMX-CA307.
 
    > | Registry code | CDR-1012 | Classification code | CMX-CA307 | | --- | --- | --- | --- | | Effective date | 2023-01-13 | Document revision | Rev. 1.4 | | Monitoring tier | Tier 1 | Source authority | CancerGov | | Approving body | See footnote † | Supersedes | CDR-1037 |
 
-2. Retinoblastoma — page 1 — Document Control Record
-
-   > Table: Document Control Record Row values: {"Registry code": "Effective date", "CDR-1012": "2023-01-13", "Classification code": "Document revision", "CMX-CA307": "Rev. 1.4"}
-
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -292,13 +300,9 @@ The classification code for the Anemia monograph is CMX-NH511.
 
    > | Registry code | CDR-1024 | Classification code | CMX-NH511 | | --- | --- | --- | --- | | Effective date | 2023-01-25 | Document revision | Rev. 1.4 | | Monitoring tier | Tier 3 | Source authority | NHLBI | | Approving body | See footnote † | Supersedes | CDR-1049 |
 
-2. Anemia — page 1 — Document Control Record
-
-   > Table: Document Control Record Row values: {"Registry code": "Effective date", "CDR-1024": "2023-01-25", "Classification code": "Document revision", "CMX-NH511": "Rev. 1.4"}
-
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -322,7 +326,7 @@ The classification code is CMX-NI715.
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -334,7 +338,7 @@ The classification code is CMX-NI715.
 
 **Answer:**
 
-The classification code for the Kidney Stones in Adults monograph is CMX-NI885.
+Classification code: CMX-NI885.
 
 **Confidence:** 0.95 (high)
 
@@ -350,7 +354,7 @@ The classification code for the Kidney Stones in Adults monograph is CMX-NI885.
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -362,20 +366,27 @@ The classification code for the Kidney Stones in Adults monograph is CMX-NI885.
 
 **Answer:**
 
-I could not find sufficiently reliable evidence in the provided documents to answer this question.
+I could not find sufficiently supported evidence in the provided documents to answer this question.
 
-**Confidence:** 0.20 (insufficient)
+**Confidence:** 0.65 (insufficient)
 
-**Abstention reason:** The Document Control Record refers to an approval footnote, but no resolved approval footnote was retrieved.
+**Abstention reason:** The Document Control Record points to a footnote (†) for the Approving body, but the content of footnote † resolving the approving/review body is not present in the provided evidence pack.
 
 **Citations:**
 
-No citations were returned.
+1. Adrenal Insufficiency and Addison's Disease — page 1 — Document Control Record
+
+   > | Registry code | CDR-1003 | Classification code | CMX-NI154 | | --- | --- | --- | --- | | Effective date | 2023-07-04 | Document revision | Rev. 3.1 | | Monitoring tier | Tier 2 | Source authority | NIDDK | | Approving body | See footnote † | Supersedes | CDR-1028 |
+
+2. Adrenal Insufficiency and Addison's Disease — page 1 — Document Control Record
+
+   > Table: Document Control Record Row values: {"Registry code": "Approving body", "CDR-1003": "See footnote †", "Classification code": "Supersedes", "CMX-NI154": "CDR-1028"}
 
 **Limitations:**
 
-- The Document Control Record refers to an approval footnote, but no resolved approval footnote was retrieved.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Footnote † (which should identify the approving body) is not included in the supplied evidence.
+- No other document or resolved footnote in the evidence pack identifies the approving/review body.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -387,20 +398,27 @@ No citations were returned.
 
 **Answer:**
 
-I could not find sufficiently reliable evidence in the provided documents to answer this question.
+I could not find sufficiently supported evidence in the provided documents to answer this question.
 
-**Confidence:** 0.20 (insufficient)
+**Confidence:** 0.66 (insufficient)
 
-**Abstention reason:** The Document Control Record refers to an approval footnote, but no resolved approval footnote was retrieved.
+**Abstention reason:** The resolved footnote marked † (which should identify the approving body) is not present in the supplied evidence pack, so the approving review body cannot be determined from the available documents.
 
 **Citations:**
 
-No citations were returned.
+1. Adult Primary Liver Cancer — page 1 — Document Control Record
+
+   > | Registry code | CDR-1017 | Classification code | CMX-CA392 | | --- | --- | --- | --- | | Effective date | 2023-11-18 | Document revision | Rev. 4.2 | | Monitoring tier | Tier 1 | Source authority | CancerGov | | Approving body | See footnote † | Supersedes | CDR-1042 |
+
+2. Adult Primary Liver Cancer — page 1 — Document Control Record
+
+   > Table: Document Control Record Row values: {"Registry code": "Approving body", "CDR-1017": "See footnote †", "Classification code": "Supersedes", "CMX-CA392": "CDR-1042"}
 
 **Limitations:**
 
-- The Document Control Record refers to an approval footnote, but no resolved approval footnote was retrieved.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- The Document Control Record explicitly points to a footnote (†) for the Approving body but the content of that footnote is missing from the provided evidence.
+- I attempted retrieval but the supplied evidence set does not contain the resolved footnote text.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -412,11 +430,11 @@ No citations were returned.
 
 **Answer:**
 
-I could not find sufficiently reliable evidence in the provided documents to answer this question.
+I could not find sufficiently supported evidence in the provided documents to answer this question.
 
-**Confidence:** 0.20 (insufficient)
+**Confidence:** 0.25 (insufficient)
 
-**Abstention reason:** The Document Control Record refers to an approval footnote, but no resolved approval footnote was retrieved.
+**Abstention reason:** The Document Control Record's "Approving body" field refers to footnote †, but the evidence pack does not contain the footnote text that resolves †, so the approving body is not available.
 
 **Citations:**
 
@@ -424,8 +442,9 @@ No citations were returned.
 
 **Limitations:**
 
-- The Document Control Record refers to an approval footnote, but no resolved approval footnote was retrieved.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- The table row with the approving-body entry: evidence_id table-chunk-082d3a6973d72aa4 (Document Control Record) shows "Approving body | See footnote †".
+- A duplicate structured-table row: evidence_id table-row:row-55be8350e026af55 also shows "Approving body": "See footnote †". The resolving footnote † is not present in the provided evidence.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -437,20 +456,26 @@ No citations were returned.
 
 **Answer:**
 
-I could not find sufficiently reliable evidence in the provided documents to answer this question.
+I could not find sufficiently supported evidence in the provided documents to answer this question.
 
-**Confidence:** 0.20 (insufficient)
+**Confidence:** 0.65 (insufficient)
 
-**Abstention reason:** The Document Control Record refers to an approval footnote, but no resolved approval footnote was retrieved.
+**Abstention reason:** The Document Control Record shows Approving body = "See footnote †" (evidence IDs table-chunk-d7c23b55c9223f9a and table-row:row-2497d2ad01f12da5), but the resolved footnote † that names the approving review body is not present in the provided evidence pack.
 
 **Citations:**
 
-No citations were returned.
+1. Inguinal Hernia — page 1 — Document Control Record
+
+   > | Registry code | CDR-1044 | Classification code | CMX-NI851 | | --- | --- | --- | --- | | Effective date | 2023-05-18 | Document revision | Rev. 2.3 | | Monitoring tier | Tier 1 | Source authority | NIDDK | | Approving body | See footnote † | Supersedes | CDR-1019 |
+
+2. Inguinal Hernia — page 1 — Document Control Record
+
+   > Table: Document Control Record Row values: {"Registry code": "Approving body", "CDR-1044": "See footnote †", "Classification code": "Supersedes", "CMX-NI851": "CDR-1019"}
 
 **Limitations:**
 
-- The Document Control Record refers to an approval footnote, but no resolved approval footnote was retrieved.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- The approving body is referenced only via a footnote marker (†) in the Document Control Record; the content of that footnote is missing from the supplied documents, so the approving review body cannot be determined from the available evidence.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -458,15 +483,13 @@ No citations were returned.
 
 **Question:** According to Figure 1 in the Abdominal Adhesions monograph, what is the 2024 reported prevalence per 100,000?
 
-**Status:** Abstained
+**Status:** Answered
 
 **Answer:**
 
-I could not find sufficiently reliable evidence in the provided documents to answer this question.
+174 per 100,000.
 
-**Confidence:** 0.60 (insufficient)
-
-**Abstention reason:** The OCR'd figure text shows several numeric values and the sequence of years but does not unambiguously map any specific numeric value to the year 2024, nor does it explicitly state the unit 'per 100,000'. The required 2024 prevalence per 100,000 is therefore not present in the supplied evidence.
+**Confidence:** 0.94 (high)
 
 **Citations:**
 
@@ -480,11 +503,9 @@ I could not find sufficiently reliable evidence in the provided documents to ans
 
 **Limitations:**
 
-- Figure OCR lists numbers and years but does not indicate which number aligns with 2024.
-- The unit 'per 100,000' is not explicitly present in the extracted figure text.
-- Extraction quality for the figure is moderate (extraction_quality 0.75–0.78), so visual confirmation of the figure is needed to resolve the mapping.
-- At least one cited source uses figure OCR.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Value is taken from the figure OCR text ('...250 200 174 150 100 50 2016 2018 2020 2022 2024') and the figure caption stating the 2024 prevalence is annotated; the mapping relies on the extracted figure text (extraction_quality 0.75–0.78).
+- At least one cited source uses stored figure OCR.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -492,32 +513,29 @@ I could not find sufficiently reliable evidence in the provided documents to ans
 
 **Question:** According to Figure 1 in the Kidney Dysplasia monograph, what is the 2024 reported prevalence per 100,000?
 
-**Status:** Abstained
+**Status:** Answered
 
 **Answer:**
 
-I could not find sufficiently reliable evidence in the provided documents to answer this question.
+359 per 100,000.
 
-**Confidence:** 0.60 (insufficient)
-
-**Abstention reason:** The extracted figure text does not include the unit 'per 100,000'; the numeric annotation for 2024 cannot be confirmed to be a prevalence per 100,000 from the supplied evidence.
+**Confidence:** 0.94 (high)
 
 **Citations:**
 
 1. Kidney Dysplasia — page 1 — Reported prevalence of Kidney Dysplasia
 
-   > Document: Kidney Dysplasia Section: Reported prevalence of Kidney Dysplasia Figure caption: Figure 1. Epidemiology of Kidney Dysplasia. The 2024 reported prevalence is annotated on the figure. Text inside figure: 500 400 359 300 200 100 2016 2018 2020 2022 2024
+   > Caption: Figure 1. Epidemiology of Kidney Dysplasia. The 2024 reported prevalence is annotated on the figure. Figure OCR: 500 400 359 300 200 100 2016 2018 2020 2022 2024 Nearby text:
 
 2. Kidney Dysplasia — page 1 — Reported prevalence of Kidney Dysplasia
 
-   > Caption: Figure 1. Epidemiology of Kidney Dysplasia. The 2024 reported prevalence is annotated on the figure. Figure OCR: 500 400 359 300 200 100 2016 2018 2020 2022 2024 Nearby text:
+   > Document: Kidney Dysplasia Section: Reported prevalence of Kidney Dysplasia Figure caption: Figure 1. Epidemiology of Kidney Dysplasia. The 2024 reported prevalence is annotated on the figure. Text inside figure: 500 400 359 300 200 100 2016 2018 2020 2022 2024
 
 **Limitations:**
 
-- Figure text was provided via OCR/extraction only; the unit labeling (e.g., 'per 100,000') is not present in the extracted text.
-- Extraction quality for the figure is limited (extraction_quality 0.75–0.78); visual verification of the figure image is required to confirm units and the exact annotated value.
-- At least one cited source uses figure OCR.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Figure OCR shows the value '359' among y-axis/annotation text but the extracted figure text does not explicitly include the label 'per 100,000' or a direct text phrase linking '359' to 2024; the extraction_quality for the figure is 0.75–0.78, so visual confirmation from the original figure would be ideal.
+- At least one cited source uses stored figure OCR.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -525,31 +543,29 @@ I could not find sufficiently reliable evidence in the provided documents to ans
 
 **Question:** According to Figure 1 in the Asbestos-Related Lung Diseases monograph, what is the 2024 reported prevalence per 100,000?
 
-**Status:** Abstained
+**Status:** Answered
 
 **Answer:**
 
-I could not find sufficiently reliable evidence in the provided documents to answer this question.
+The 2024 reported prevalence is 219 per 100,000.
 
-**Confidence:** 0.60 (insufficient)
-
-**Abstention reason:** The supplied figure text does not explicitly state which numeric value corresponds to the 2024 data point. The extracted OCR lists numbers ('300 250 219 200 150 100 50 2016 2018 2020 2022 2024') but does not unambiguously map '219' (or any other number) to the year 2024. A visual inspection of Figure 1 is required to read the annotated 2024 prevalence.
+**Confidence:** 0.94 (high)
 
 **Citations:**
 
 1. Asbestos-Related Lung Diseases — page 2 — Reported prevalence of Asbestos-Related Lung Diseases
 
-   > Caption: Figure 1. Epidemiology of Asbestos-Related Lung Diseases. The 2024 reported prevalence is annotated on the figure. Figure OCR: 300 250 219 200 150 100 50 2016 2018 2020 2022 2024 Nearby text:
+   > Document: Asbestos-Related Lung Diseases Section: Reported prevalence of Asbestos-Related Lung Diseases Figure caption: Figure 1. Epidemiology of Asbestos-Related Lung Diseases. The 2024 reported prevalence is annotated on the figure. Text inside figure: 300 250 219 200 150 100 50 2016 2018 2020 2022 2024
 
 2. Asbestos-Related Lung Diseases — page 2 — Reported prevalence of Asbestos-Related Lung Diseases
 
-   > Document: Asbestos-Related Lung Diseases Section: Reported prevalence of Asbestos-Related Lung Diseases Figure caption: Figure 1. Epidemiology of Asbestos-Related Lung Diseases. The 2024 reported prevalence is annotated on the figure. Text inside figure: 300 250 219 200 150 100 50 2016 2018 2020 2022 2024
+   > Caption: Figure 1. Epidemiology of Asbestos-Related Lung Diseases. The 2024 reported prevalence is annotated on the figure. Figure OCR: 300 250 219 200 150 100 50 2016 2018 2020 2022 2024 Nearby text:
 
 **Limitations:**
 
-- Available evidence is two figure extracts (evidence_ids: figure:figure-a3da2a8992e791af and figure-chunk-de364487e2c1c01a) whose text notes that the 2024 prevalence is annotated on the figure but only provides a sequence of numbers and years without an explicit mapping. Extraction_quality for the figure chunks is <1 (0.78 and 0.75), and the numeric annotation for 2024 is not captured in the text extraction.
-- At least one cited source uses figure OCR.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Figure OCR extraction_quality is 0.75–0.78 and the figure image was provided as text; visual confirmation of the figure image was not available in the evidence pack.
+- At least one cited source uses stored figure OCR.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -561,28 +577,21 @@ I could not find sufficiently reliable evidence in the provided documents to ans
 
 **Answer:**
 
-I could not find sufficiently reliable evidence in the provided documents to answer this question.
+I could not find sufficiently supported evidence in the provided documents to answer this question.
 
-**Confidence:** 0.60 (insufficient)
+**Confidence:** 0.25 (insufficient)
 
-**Abstention reason:** The figure text supplied does not specify the unit/denominator 'per 100,000', so the prevalence 'per 100,000' cannot be determined from the provided evidence.
+**Abstention reason:** The extracted figure text shows the annotated 2024 value "959" (figure:figure-af6a8044e26e4c2a / figure-chunk-a1cd73fb53cbaf3f) but does not include the unit “per 100,000.” Because the question asks specifically for the prevalence per 100,000 and the unit is not present in the supplied evidence, the required fact (value with unit) is missing.
 
 **Citations:**
 
-1. Kidney Stones in Children — page 1 — Key facts
-
-   > Caption: Figure 1. Epidemiology of Kidney Stones in Children. The 2024 reported prevalence is annotated on the figure. Figure OCR: Reported prevalence of Kidney Stones in Children 1200 1000 959 800 600 400 200 2016 2018 2020 2022 2024 Nearby text: Registry: CDR-1047 Tier 1 monitoring Formulary agent: Dializine Preva...
-
-2. Kidney Stones in Children — page 1 — Key facts
-
-   > Document: Kidney Stones in Children Section: Key facts Figure caption: Figure 1. Epidemiology of Kidney Stones in Children. The 2024 reported prevalence is annotated on the figure. Nearby text: Registry: CDR-1047 Tier 1 monitoring Formulary agent: Dializine Prevalence: see Figure 1 Text inside figure: Reported preva...
+No citations were returned.
 
 **Limitations:**
 
-- Evidence is OCR/text extracted from the figure (extraction_quality 0.75–0.78); the figure shows numeric annotation but does not include an explicit unit.
-- Cannot assume a denominator (e.g., per 100,000) when it is not stated in the supplied evidence.
-- At least one cited source uses figure OCR.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Figure OCR/extraction quality is limited (extraction_quality 0.75–0.78) and the unit labeling (e.g., “per 100,000”) is not present in the extracted figure text.
+- The figure caption states that the 2024 prevalence is annotated on the figure, but the supplied text-only extraction does not unambiguously preserve the annotated unit, so a visual check of the original figure would be needed to confirm the unit.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -596,7 +605,7 @@ I could not find sufficiently reliable evidence in the provided documents to ans
 
 Formulary agent of record: Gastroprin; induction dose: 150 mg.
 
-**Confidence:** 0.94 (high)
+**Confidence:** 0.95 (high)
 
 **Citations:**
 
@@ -606,7 +615,7 @@ Formulary agent of record: Gastroprin; induction dose: 150 mg.
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -618,9 +627,9 @@ Formulary agent of record: Gastroprin; induction dose: 150 mg.
 
 **Answer:**
 
-The scanned Appendix C lists the formulary agent of record as Uristat-D with induction 150 mg.
+Formulary agent of record: Uristat-D; Induction dose: 150 mg.
 
-**Confidence:** 0.94 (high)
+**Confidence:** 0.95 (high)
 
 **Citations:**
 
@@ -628,10 +637,14 @@ The scanned Appendix C lists the formulary agent of record as Uristat-D with ind
 
    > Documentation clause: this scanned appendix is maintained under registry code CDR-1014 and classification CMX-CA341. Formulary agent of record: Uristat-D, induction 150 mg. Appendix C (scanned facsimile). Machine text not embedded.
 
+2. Adult Central Nervous System Tumors — page 6 — Formulary Appendix B - Dosing
+
+   > Table: Formulary Appendix B - Dosing Row values: {"Agent": "Uristat-D", "Phase": "Induction", "Dose": "150 mg", "Route": "oral"}
+
 **Limitations:**
 
-- The Appendix C section is a scanned facsimile and the extracted text has extraction_quality 0.88; the document notes "Machine text not embedded."
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- The information comes from a scanned appendix/facsimile (machine text not embedded) as noted in the source; extraction may be limited by scan quality.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -643,9 +656,9 @@ The scanned Appendix C lists the formulary agent of record as Uristat-D with ind
 
 **Answer:**
 
-The scanned Appendix C lists Pulmocort-X as the formulary agent of record with an induction dose of 150 mg.
+The scanned Appendix C lists the formulary agent of record as Pulmocort-X with induction 150 mg.
 
-**Confidence:** 0.94 (high)
+**Confidence:** 0.95 (high)
 
 **Citations:**
 
@@ -653,10 +666,13 @@ The scanned Appendix C lists Pulmocort-X as the formulary agent of record with a
 
    > Documentation clause: this scanned appendix is maintained under registry code CDR-1034 and classification CMX-NI681 . Formulary agent of record: Pulmocort-X, induction 150 mg. Appendix C (scanned facsimile). Machine text not embedded.
 
+2. IgA Nephropathy — page 4 — Table 3
+
+   > | Pulmocort-X | Induction | 150 mg | oral | | --- | --- | --- | --- | | Pulmocort-X | Renal-adjusted | reduce 50% | oral |
+
 **Limitations:**
 
-- Appendix C is a scanned facsimile (not machine-native); the extracted text indicates 'Appendix C (scanned facsimile). Machine text not embedded.' (evidence_id: text-fc8c866d83080e7c).
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -668,7 +684,7 @@ The scanned Appendix C lists Pulmocort-X as the formulary agent of record with a
 
 **Answer:**
 
-Scanned Appendix C lists the formulary agent of record as Cardizanib with an induction dose of 150 mg.
+Formulary agent of record: Cardizanib; induction 150 mg.
 
 **Confidence:** 0.94 (high)
 
@@ -678,10 +694,19 @@ Scanned Appendix C lists the formulary agent of record as Cardizanib with an ind
 
    > PTH regulates the level of calcium in the blood , release of calcium from bone_ absorption of calcium in the small intestine, and excretion of calcium in the urine When the level of calcium in the blood falls too low; normal parathyroid glands release just enough PTH to restore the blood calcium level. and Documenta...
 
+2. Primary Hyperparathyroidism — page 3 — Formulary Appendix B - Dosing
+
+   > | Agent | Phase | Dose | Route | | --- | --- | --- | --- | | Cardizanib | Induction | 150 mg | oral | | | Maintenance | 20 mg twice daily | oral | | | Renal-adjusted | reduce 50% | oral |
+
+3. Primary Hyperparathyroidism — page 3 — Formulary Appendix B - Dosing
+
+   > Table: Formulary Appendix B - Dosing Row values: {"Agent": "Cardizanib", "Phase": "Induction", "Dose": "150 mg", "Route": "oral"}
+
 **Limitations:**
 
-- Appendix C is a scanned facsimile and noted as "Machine text not embedded," so the extraction is from OCRed/scanned text (evidence extraction_quality 0.88).
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Appendix C is a scanned facsimile; the source notes "Machine text not embedded." (extraction_quality for some table entries indicates visual check may be needed).
+- At least one cited extraction carries a visual-review warning.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -693,7 +718,7 @@ Scanned Appendix C lists the formulary agent of record as Cardizanib with an ind
 
 **Answer:**
 
-The maintenance dose of Hematoril listed in Appendix A (Table A1) is 40 mg twice daily.
+Hematoril maintenance dose: 40 mg twice daily.
 
 **Confidence:** 0.95 (high)
 
@@ -709,7 +734,8 @@ The maintenance dose of Hematoril listed in Appendix A (Table A1) is 40 mg twice
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Value taken from Table A1 (maintenance column) in the provided monograph evidence; table extraction quality is 0.95–0.97.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -721,7 +747,7 @@ The maintenance dose of Hematoril listed in Appendix A (Table A1) is 40 mg twice
 
 **Answer:**
 
-The maintenance dose of Pulmocort-X listed in Appendix A is "30 mg twice daily".
+The maintenance dose of Pulmocort-X is 30 mg twice daily.
 
 **Confidence:** 0.95 (high)
 
@@ -737,7 +763,7 @@ The maintenance dose of Pulmocort-X listed in Appendix A is "30 mg twice daily".
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -749,7 +775,7 @@ The maintenance dose of Pulmocort-X listed in Appendix A is "30 mg twice daily".
 
 **Answer:**
 
-The maintenance dose of Nefralon listed in Appendix A (the landscape staging matrix) is 10 mg twice daily.
+The maintenance dose of Nefralon listed in Appendix A is "10 mg twice daily".
 
 **Confidence:** 0.95 (high)
 
@@ -765,7 +791,7 @@ The maintenance dose of Nefralon listed in Appendix A (the landscape staging mat
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -773,35 +799,37 @@ The maintenance dose of Nefralon listed in Appendix A (the landscape staging mat
 
 **Question:** The Short Bowel Syndrome monograph tells you not to use local values for a certain drug's induction dose and points to another monograph's Formulary Appendix B. What is that induction dose, and which drug?
 
-**Status:** Abstained
+**Status:** Answered
 
 **Answer:**
 
-I could not find sufficiently reliable evidence in the provided documents to answer this question.
+Drug: Corticelle. Induction dose: 125 mg.
 
-**Confidence:** 0.60 (insufficient)
-
-**Abstention reason:** Evidence reliability was below the answer threshold.
+**Confidence:** 0.93 (high)
 
 **Citations:**
 
 1. Short Bowel Syndrome — page 1 — Formulary Appendix B
 
+   > Protocol note: for the induction dosing of Corticelle , do not use local values; consult Formulary Appendix B of the monograph Adult Acute Myeloid Leukemia (registry code CDR-1013 ).
+
+2. Short Bowel Syndrome — page 1 — Formulary Appendix B
+
    > Reference instruction: Protocol note: for the induction dosing of Corticelle , do not use local values; consult Formulary Appendix B of the monograph Adult Acute Myeloid Leukemia (registry code CDR-1013 ). Target registry code: CDR-1013 Target document: Adult Acute Myeloid Leukemia Target section: Formulary Appendix B
 
-2. Adult Acute Myeloid Leukemia — page 3 — Table A1. The formulary agent for this condition is Corticelle; induction and maintenance doses appear in the two right-hand columns.
+3. Adult Acute Myeloid Leukemia — page 3 — Table A1. The formulary agent for this condition is Corticelle; induction and maintenance doses appear in the two right-hand columns.
 
    > Table: Table A1. The formulary agent for this condition is Corticelle; induction and maintenance doses appear in the two right-hand columns. Row values: {"Stage/Grade": "Grade 1", "Definition": "criteria set 1", "Monitoring tier": "Tier 3", "Classification": "CMX-CA324", "First-line": "observe", "Formulary agent": "...
 
-3. Short Bowel Syndrome — page 4 — Formulary Appendix B - Dosing
+4. Short Bowel Syndrome — page 4 — Formulary Appendix B - Dosing
 
    > Table: Formulary Appendix B - Dosing Row values: {"Agent": "", "Phase": "Induction", "Dose": "50 mg", "Route": "oral"}
 
 **Limitations:**
 
-- The Short Bowel monograph's local Formulary Appendix B contains a row showing an induction dose of "50 mg" but the row has low extraction quality and an unspecified agent (table-row:row-bda24578c2b097f7, requires visual check). The Short Bowel document explicitly directs users not to use local values and to consult the Adult Acute Myeloid Leukemia Formulary Appendix B (reference:reference-39baef99453300bf), which is why the Adult AML value (125 mg) was used.
-- At least one cited extraction requires visual review.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- A local dosing row in the Short Bowel Syndrome monograph (table-row:row-bda24578c2b097f7) shows 'Induction 50 mg' but the agent is blank and extraction_quality is low (requires visual check). The Short Bowel monograph explicitly directs clinicians not to use local values and to consult the Adult Acute Myeloid Leukemia Formulary Appendix B (CDR-1013), so the Adult AML value (125 mg for Corticelle) was used.
+- At least one cited extraction carries a visual-review warning.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -815,7 +843,7 @@ I could not find sufficiently reliable evidence in the provided documents to ans
 
 Drug: Pulmocort-X. Induction dose: 125 mg.
 
-**Confidence:** 0.95 (high)
+**Confidence:** 0.94 (high)
 
 **Citations:**
 
@@ -823,13 +851,17 @@ Drug: Pulmocort-X. Induction dose: 125 mg.
 
    > Reference instruction: Protocol note: for the induction dosing of Pulmocort-X , do not use local values; consult Formulary Appendix B of the monograph Adult Soft Tissue Sarcoma (registry code CDR-1018 ). Target registry code: CDR-1018 Target document: Adult Soft Tissue Sarcoma Target section: Formulary Appendix B
 
-2. Adult Soft Tissue Sarcoma — page 3 — Table A1. The formulary agent for this condition is Pulmocort-X; induction and maintenance doses appear in the two right-hand columns.
+2. Cyclic Vomiting Syndrome — page 1 — Formulary Appendix B
+
+   > Protocol note: for the induction dosing of Pulmocort-X , do not use local values; consult Formulary Appendix B of the monograph Adult Soft Tissue Sarcoma (registry code CDR-1018 ).
+
+3. Adult Soft Tissue Sarcoma — page 3 — Table A1. The formulary agent for this condition is Pulmocort-X; induction and maintenance doses appear in the two right-hand columns.
 
    > Table: Table A1. The formulary agent for this condition is Pulmocort-X; induction and maintenance doses appear in the two right-hand columns. Row values: {"Stage/Grade": "Grade 1", "Definition": "criteria set 1", "Monitoring tier": "Tier 2", "Classification": "CMX-CA409", "First-line": "observe", "Formulary agent": ...
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -841,9 +873,9 @@ Drug: Pulmocort-X. Induction dose: 125 mg.
 
 **Answer:**
 
-The Adult AML monograph refers to Hepatolus; its induction dose (per Angina Formulary Appendix B) is 75 mg oral.
+The drug is Hepatolus and the induction dose listed is 75 mg (per the Angina Formulary Appendix B).
 
-**Confidence:** 0.95 (high)
+**Confidence:** 0.94 (high)
 
 **Citations:**
 
@@ -853,16 +885,16 @@ The Adult AML monograph refers to Hepatolus; its induction dose (per Angina Form
 
 2. Angina — page 2 — Table 3
 
-   > Table: Table 3 Row values: {"Hepatolus": "Hepatolus", "Induction Maintenance": "Renal-adjusted", "75 mg 30 mg twice": "reduce 50%", "oral oral": "oral"}
+   > | Hepatolus | Induction Maintenance | 75 mg 30 mg twice | oral oral | | --- | --- | --- | --- | | Hepatolus | Renal-adjusted | reduce 50% | oral |
 
 3. Angina — page 2 — Table 3
 
-   > | Hepatolus | Induction Maintenance | 75 mg 30 mg twice | oral oral | | --- | --- | --- | --- | | Hepatolus | Renal-adjusted | reduce 50% | oral |
+   > Table: Table 3 Row values: {"Hepatolus": "Hepatolus", "Induction Maintenance": "Renal-adjusted", "75 mg 30 mg twice": "reduce 50%", "oral oral": "oral"}
 
 **Limitations:**
 
-- The Angina table text is a flattened table row; the association of "75 mg" with the 'Induction' column is taken from the table row/columns as extracted (extraction_quality 0.95–0.97).
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- The Angina table places both induction and maintenance doses together in one cell as "75 mg 30 mg twice"; the induction value is taken as the first figure, "75 mg", preserving the source spelling and spacing.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -874,9 +906,9 @@ The Adult AML monograph refers to Hepatolus; its induction dose (per Angina Form
 
 **Answer:**
 
-The drug is Cardizanib and the induction dose is 125 mg (see the Bile Duct Cancer cross-reference to Diverticular Disease Formulary Appendix B and the Diverticular Disease Table A1 entry).
+The drug is Cardizanib and the induction dose is 125 mg.
 
-**Confidence:** 0.95 (high)
+**Confidence:** 0.94 (high)
 
 **Citations:**
 
@@ -890,7 +922,7 @@ The drug is Cardizanib and the induction dose is 125 mg (see the Bile Duct Cance
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -902,9 +934,9 @@ The drug is Cardizanib and the induction dose is 125 mg (see the Bile Duct Cance
 
 **Answer:**
 
-The drug is Uristat-D and the induction dose (per the Kidney Stones in Adults Formulary Appendix B) is 75 mg oral.
+The drug is Uristat-D and the induction dose (per Kidney Stones in Adults, Formulary Appendix B) is 75 mg oral.
 
-**Confidence:** 0.95 (high)
+**Confidence:** 0.94 (high)
 
 **Citations:**
 
@@ -916,9 +948,13 @@ The drug is Uristat-D and the induction dose (per the Kidney Stones in Adults Fo
 
    > Table: Formulary Appendix B - Dosing Row values: {"Agent": "Uristat-D", "Phase": "Induction", "Dose": "75 mg", "Route": "oral"}
 
+3. Kidney Stones in Adults — page 1 — Formulary Appendix B - Dosing
+
+   > | Agent | Phase | Dose | Route | | --- | --- | --- | --- | | Uristat-D | Induction | 75 mg | oral | | Uristat-D | Maintenance | 30 mg twice daily | oral | | Uristat-D | Renal-adjusted | reduce 50% | oral |
+
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -930,9 +966,9 @@ The drug is Uristat-D and the induction dose (per the Kidney Stones in Adults Fo
 
 **Answer:**
 
-The drug is Hematoril and the induction dose is 125 mg.
+Hematoril — induction dose 125 mg.
 
-**Confidence:** 0.95 (high)
+**Confidence:** 0.94 (high)
 
 **Citations:**
 
@@ -946,7 +982,7 @@ The drug is Hematoril and the induction dose is 125 mg.
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -958,20 +994,7 @@ The drug is Hematoril and the induction dose is 125 mg.
 
 **Answer:**
 
-Conditions whose Document Control Record assigns Monitoring Tier 3:
-- Acquired Cystic Kidney Disease
-- Adult Acute Myeloid Leukemia
-- Adult Non-Hodgkin Lymphoma
-- Anemia
-- Atherosclerosis
-- Childhood Astrocytomas
-- Cyclic Vomiting Syndrome
-- Diabetes, Heart Disease, and Stroke
-- Diabetic Kidney Disease
-- Kidney Failure: Choosing a Treatment That's Right for You
-- Polycystic Kidney Disease
-- Porphyria
-- Short Bowel Syndrome
+Conditions assigned Monitoring Tier 3 in the corpus: Acquired Cystic Kidney Disease; Adult Acute Myeloid Leukemia; Adult Non-Hodgkin Lymphoma; Anemia; Atherosclerosis; Childhood Astrocytomas; Cyclic Vomiting Syndrome; Diabetes, Heart Disease, and Stroke; Diabetic Kidney Disease; Kidney Failure: Choosing a Treatment That's Right for You; Polycystic Kidney Disease; Porphyria; Short Bowel Syndrome.
 
 **Confidence:** 0.92 (high)
 
@@ -981,18 +1004,18 @@ Conditions whose Document Control Record assigns Monitoring Tier 3:
 
    > Aggregation rule: Monitoring Tier 3 Matching conditions: - Acquired Cystic Kidney Disease - Adult Acute Myeloid Leukemia - Adult Non-Hodgkin Lymphoma - Anemia - Atherosclerosis - Childhood Astrocytomas - Cyclic Vomiting Syndrome - Diabetes, Heart Disease, and Stroke - Diabetic Kidney Disease - Kidney Failure: Choosi...
 
-2. Cyclic Vomiting Syndrome — page 1 — Document Control Record
-
-   > Table: Document Control Record Row values: {"Registry code": "Monitoring tier", "CDR-1005": "Tier 3", "Classification code": "Source authority", "CMX-NI188": "NIDDK"}
-
-3. Short Bowel Syndrome — page 1 — Document Control Record
+2. Short Bowel Syndrome — page 1 — Document Control Record
 
    > Table: Document Control Record Row values: {"Registry code": "Monitoring tier", "CDR-1000": "Tier 3", "Classification code": "Source authority", "CMX-NI103": "NIDDK"}
 
+3. Cyclic Vomiting Syndrome — page 1 — Document Control Record
+
+   > Table: Document Control Record Row values: {"Registry code": "Monitoring tier", "CDR-1005": "Tier 3", "Classification code": "Source authority", "CMX-NI188": "NIDDK"}
+
 **Limitations:**
 
-- List is taken from the corpus-level aggregation 'Monitoring Tier 3' (evidence_id corpus-aggregation:monitoring-tier-3).
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Primary list comes from the corpus-aggregation entry (extraction_quality 0.9). Two individual Document Control Record rows (Short Bowel Syndrome and Cyclic Vomiting Syndrome) available with extraction_quality 0.97 corroborate those items. If additional Document Control Record rows for other conditions exist in the corpus, they were not present in the supplied evidence pack.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -1004,7 +1027,7 @@ Conditions whose Document Control Record assigns Monitoring Tier 3:
 
 **Answer:**
 
-Nefralon is listed as the formulary agent of record for: Adult Non-Hodgkin Lymphoma; Diabetes, Heart Disease, and Stroke; Porphyria; and Short Bowel Syndrome.
+The documents list the following conditions as having Nefralon as the formulary agent of record: Adult Non-Hodgkin Lymphoma; Diabetes, Heart Disease, and Stroke; Porphyria; Short Bowel Syndrome.
 
 **Confidence:** 0.92 (high)
 
@@ -1024,7 +1047,7 @@ Nefralon is listed as the formulary agent of record for: Adult Non-Hodgkin Lymph
 
 **Limitations:**
 
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -1036,22 +1059,21 @@ Nefralon is listed as the formulary agent of record for: Adult Non-Hodgkin Lymph
 
 **Answer:**
 
-I could not find sufficiently reliable evidence in the provided documents to answer this question.
+I could not find sufficiently supported evidence in the provided documents to answer this question.
 
-**Confidence:** 0.60 (insufficient)
+**Confidence:** 0.25 (insufficient)
 
-**Abstention reason:** No document or section in the provided evidence pack describes treatment options for melanoma; only a reference/label to “Melanoma Treatment” appears in evidence_id text-49573bad39adccd7.
+**Abstention reason:** No document in the provided evidence pack contains melanoma treatment details. The corpus includes a Central Nervous System Tumors document that names 'Melanoma' and refers to a separate 'Melanoma Treatment' resource (evidence_id text-49573bad39adccd7), but the actual melanoma treatment document or any treatment information for melanoma is not present in the evidence pack.
 
 **Citations:**
 
-1. Adult Central Nervous System Tumors — pages 1, 2, 3 — Overview
-
-   > Melanoma. - Breast cancer. - Colon cancer. - Kidney cancer. - Nasopharyngeal cancer. - Cancer of unknown primary site. Cancer may spread to the leptomeninges (the two innermost membranes covering the brain and spinal cord). This is called leptomeningeal carcinomatosis. The most common cancers that spread to the lept...
+No citations were returned.
 
 **Limitations:**
 
-- The evidence pack contains a mention of melanoma (text-49573bad39adccd7) but does not include the referenced melanoma treatment document or any text describing melanoma treatments. No additional documents matching “Melanoma Treatment” were retrievable from the supplied corpus.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- Missing target document: the evidence pack does not include a 'Melanoma Treatment' document or any text/tables describing treatment options for melanoma.
+- I searched the provided corpus and only found a cross-reference to 'Melanoma Treatment' (text-49573bad39adccd7) without the referenced content; therefore the requested clinical answer is not available.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -1063,11 +1085,11 @@ I could not find sufficiently reliable evidence in the provided documents to ans
 
 **Answer:**
 
-I could not find sufficiently reliable evidence in the provided documents to answer this question.
+I could not find sufficiently supported evidence in the provided documents to answer this question.
 
-**Confidence:** 0.20 (insufficient)
+**Confidence:** 0.25 (insufficient)
 
-**Abstention reason:** No documents in the supplied evidence pack discuss COVID-19, SARS‑CoV‑2, coronavirus, or modes of transmission. Three corpus searches for terms such as “How is COVID-19 transmitted?” and related queries returned only unrelated documents (for example, evidence_id text-cc787af9c333a7ce and others in the pack).
+**Abstention reason:** The evidence pack contains no document or passage that describes COVID-19 or SARS‑CoV‑2 transmission. Because the required factual information is missing from the supplied evidence, I cannot answer the question using only the provided documents.
 
 **Citations:**
 
@@ -1075,9 +1097,9 @@ No citations were returned.
 
 **Limitations:**
 
-- Evidence pack does not contain any text or tables about COVID-19 or SARS‑CoV‑2 transmission.
-- I performed three retrieval searches across the corpus (queries: "How is COVID-19 transmitted?", "SARS-CoV-2 transmission respiratory droplets airborne contact surfaces person-to-person", and "COVID-19 coronavirus transmission droplets contact airborne 'COVID' 'SARS'") and none returned relevant COVID-19 transmission evidence.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- No text or table in the provided evidence pack mentions COVID-19 or SARS‑CoV‑2 transmission.
+- Some documents discuss other viruses (for example, foodborne viruses) but they do not address COVID-19 specifically; therefore those documents cannot be used to answer this question.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -1089,11 +1111,11 @@ No citations were returned.
 
 **Answer:**
 
-I could not find sufficiently reliable evidence in the provided documents to answer this question.
+I could not find sufficiently supported evidence in the provided documents to answer this question.
 
-**Confidence:** 0.20 (insufficient)
+**Confidence:** 0.25 (insufficient)
 
-**Abstention reason:** None of the documents in the provided evidence pack contain pancreatic cancer survival statistics or the five-year survival rate. I searched the corpus for queries such as 'pancreatic cancer five-year survival rate' and 'pancreatic cancer' but the retrieved documents were about bile duct cancer, liver cancer, gallstones, and diabetic kidney disease and did not report a five-year survival rate for pancreatic cancer.
+**Abstention reason:** No document in the provided evidence pack contains a five-year survival rate (or any survival-rate statistic) for pancreatic cancer. Searches of the corpus for "pancreatic cancer" and "pancreatic cancer five-year survival rate" returned only documents about other conditions (bile duct cancer, gallstones, diabetic kidney disease, liver cancer) and did not provide the requested survival statistic.
 
 **Citations:**
 
@@ -1101,10 +1123,10 @@ No citations were returned.
 
 **Limitations:**
 
-- No document in the supplied evidence pack covers pancreatic cancer survival statistics.
-- I made multiple corpus searches (queries: 'pancreatic cancer five-year survival rate', 'pancreatic cancer', 'PDQ Pancreatic Cancer five-year survival rate') but did not find a relevant source in the provided documents.
-- To answer, I need a document or evidence_id from the corpus that explicitly states the five-year survival rate for pancreatic cancer.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- The evidence pack contains no pancreatic cancer (or pancreatic neoplasm) summary or survival statistics.
+- Two corpus searches for 'pancreatic cancer' and 'pancreatic cancer five-year survival rate' were performed and did not identify any document providing the requested value.
+- Cannot fabricate or infer a survival percentage because the SOURCE BOUNDARY forbids using outside knowledge.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
 
@@ -1116,11 +1138,11 @@ No citations were returned.
 
 **Answer:**
 
-I could not find sufficiently reliable evidence in the provided documents to answer this question.
+I could not find sufficiently supported evidence in the provided documents to answer this question.
 
-**Confidence:** 0.20 (insufficient)
+**Confidence:** 0.25 (insufficient)
 
-**Abstention reason:** The requested registry code does not appear in retrieved document metadata or control records.
+**Abstention reason:** No Document Control Record row or document metadata in the provided evidence pack lists the registry code 'CDR-1500'.
 
 **Citations:**
 
@@ -1128,7 +1150,9 @@ No citations were returned.
 
 **Limitations:**
 
-- The requested registry code does not appear in retrieved document metadata or control records.
-- Confidence is a heuristic evidence-reliability score and is not yet statistically calibrated.
+- I inspected the supplied evidence pack (Document Control Record rows) and found registry codes CDR-1000, CDR-1001, CDR-1002, CDR-1003, and others, but not CDR-1500.
+- I ran a corpus search for 'CDR-1500' (no matching registry code was returned in the supplied evidence).
+- Because the evidence pack does not contain CDR-1500, I cannot answer which document that registry code is assigned to.
+- Confidence is heuristic and is not yet statistically calibrated.
 
 ---
