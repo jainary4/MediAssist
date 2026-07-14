@@ -9,12 +9,18 @@ from typing import Any
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
+import threading
+from contextvars import ContextVar
 
 from assistant.models import (
     EvidenceItem,
     EvidencePack,
     RetrievalTrace,
     RoutePlan,
+)
+
+from assistant.query_router import (
+    analyse_query as build_route_plan,
 )
 
 """Provide deterministic hybrid retrieval over SQLite and FAISS."""
@@ -94,22 +100,37 @@ class RetrievalController:
                 )
 
         self.database_path = database_path
-        self.index = faiss.read_index(str(index_path))
-        self.embedder = SentenceTransformer(embedding_model)
 
-        mapping = json.loads(
-            mapping_path.read_text(encoding="utf-8")
+        self.index = faiss.read_index(
+            str(index_path)
         )
 
-        if mapping["embedding_model"] != embedding_model:
+        self.embedder = SentenceTransformer(
+            embedding_model
+        )
+
+        mapping = json.loads(
+            mapping_path.read_text(
+                encoding="utf-8"
+            )
+        )
+
+        if (
+            mapping["embedding_model"]
+            != embedding_model
+        ):
             raise ValueError(
                 "The query embedder does not match the model used "
                 "to build the FAISS index."
             )
 
-        if int(mapping["vector_count"]) != int(self.index.ntotal):
+        if (
+            int(mapping["vector_count"])
+            != int(self.index.ntotal)
+        ):
             raise ValueError(
-                "FAISS vector count does not match vector_mapping.json."
+                "FAISS vector count does not match "
+                "vector_mapping.json."
             )
 
         self.vector_mapping = {
@@ -117,8 +138,56 @@ class RetrievalController:
             for record in mapping["vectors"]
         }
 
-        self.documents = self._load_documents()
-        self.active_evidence: dict[str, EvidenceItem] = {}
+        self.documents = (
+            self._load_documents()
+        )
+
+        self._active_evidence_context: ContextVar[
+            dict[str, EvidenceItem] | None
+        ] = ContextVar(
+            "clinical_qa_active_evidence",
+            default=None,
+        )
+
+        self._embedding_lock = (
+            threading.Lock()
+        )
+
+    @property
+    def active_evidence(
+        self,
+    ) -> dict[str, EvidenceItem]:
+        """Return evidence belonging to the current request context.
+
+        Returns:
+            dict[str, EvidenceItem]: Request-local evidence registry.
+        """
+        registry = (
+            self._active_evidence_context.get()
+        )
+
+        if registry is None:
+            registry = {}
+
+            self._active_evidence_context.set(
+                registry
+            )
+
+        return registry
+
+    @active_evidence.setter
+    def active_evidence(
+        self,
+        value: dict[str, EvidenceItem],
+    ) -> None:
+        """Replace evidence for the current request context.
+
+        Args:
+            value (dict[str, EvidenceItem]): New evidence registry.
+        """
+        self._active_evidence_context.set(
+            value
+        )
 
     def _connect(self) -> sqlite3.Connection:
         """Open the knowledge base in immutable read-only mode.
@@ -213,130 +282,14 @@ class RetrievalController:
         """Build a deterministic retrieval plan from question wording.
 
         Args:
-            question (str): User's question.
+            question (str): User question.
 
         Returns:
-            RoutePlan: Retrieval paths and required facts.
+            RoutePlan: Intent-specific retrieval plan.
         """
-        normalized_question = self._normalize(question)
-
-        named_documents = [
-            record
-            for record in self.documents
-            if self._normalize(record["title"])
-            in normalized_question
-        ]
-
-        requires_figure = any(
-            signal in normalized_question
-            for signal in (
-                "figure",
-                "chart",
-                "graph",
-                "reported prevalence",
-            )
-        )
-
-        requires_cross_document = any(
-            signal in normalized_question
-            for signal in (
-                "another monograph",
-                "points to",
-                "do not use local values",
-                "consult formulary",
-            )
-        )
-
-        requires_corpus_aggregation = any(
-            signal in normalized_question
-            for signal in (
-                "every condition",
-                "which conditions",
-                "all conditions",
-                "across the corpus",
-                "all monographs",
-            )
-        )
-
-        requires_structured_table = any(
-            signal in normalized_question
-            for signal in (
-                "dose",
-                "induction",
-                "maintenance",
-                "formulary agent",
-                "monitoring tier",
-                "classification code",
-                "registry code",
-                "appendix a",
-                "appendix b",
-                "appendix c",
-            )
-        )
-
-        requires_metadata = any(
-            signal in normalized_question
-            for signal in (
-                "classification code",
-                "registry code",
-                "review body",
-                "approved",
-                "monitoring tier",
-            )
-        )
-
-        required_facts: list[str] = []
-
-        if "classification code" in normalized_question:
-            required_facts.append("classification_code")
-
-        if "registry code" in normalized_question:
-            required_facts.append("registry_code")
-
-        if (
-            "review body" in normalized_question
-            or "approved" in normalized_question
-        ):
-            required_facts.append("review_body")
-
-        if "induction" in normalized_question:
-            required_facts.extend([
-                "drug",
-                "induction_dose",
-            ])
-
-        if "maintenance" in normalized_question:
-            required_facts.append("maintenance_dose")
-
-        if requires_figure:
-            required_facts.append("figure_value")
-
-        if requires_cross_document:
-            required_facts.append("cross_document_link")
-
-        if requires_corpus_aggregation:
-            required_facts.append("complete_condition_set")
-
-        if not required_facts:
-            required_facts.append("clinical_answer")
-
-        return RoutePlan(
-            named_document_ids=[
-                record["document_id"]
-                for record in named_documents
-            ],
-            named_document_titles=[
-                record["title"]
-                for record in named_documents
-            ],
-            required_facts=sorted(set(required_facts)),
-            requires_metadata=requires_metadata,
-            requires_structured_table=requires_structured_table,
-            requires_figure=requires_figure,
-            requires_cross_document=requires_cross_document,
-            requires_corpus_aggregation=(
-                requires_corpus_aggregation
-            ),
+        return build_route_plan(
+            question=question,
+            documents=self.documents,
         )
 
     def retrieve(
@@ -387,6 +340,16 @@ class RetrievalController:
                 limit=20,
             )
             trace.structured_result_count += len(table_items)
+        
+        if "footnote" in route.retrieval_channels:
+            footnote_items = self.lookup_footnotes(
+                document_ids=(
+                    route.named_document_ids or None
+                ),
+            )
+            trace.footnote_result_count = len(
+                footnote_items
+            )
 
         if route.requires_figure:
             figure_items = self.lookup_figures(
@@ -439,48 +402,56 @@ class RetrievalController:
             trace=trace,
         )
 
-    def search_semantic(
-        self,
-        query: str,
-        top_k: int = 10,
-        document_ids: list[str] | None = None,
-    ) -> list[EvidenceItem]:
+    
+
+    def search_semantic(self,query: str,top_k: int = 10,document_ids: list[str] | None = None,) -> list[EvidenceItem]:
         """Search FAISS using the same embedder used during indexing.
+
+        The embedding model and FAISS search are protected by a lock so
+        concurrent Modal requests cannot use these shared objects at the
+        same time.
 
         Args:
             query (str): Semantic search query.
-            top_k (int): Maximum results.
+            top_k (int): Maximum number of results to return.
             document_ids (list[str] | None): Optional document filter.
 
         Returns:
             list[EvidenceItem]: Semantic search evidence.
         """
-        if hasattr(self.embedder, "encode_query"):
-            vector = self.embedder.encode_query(
-                [query],
-                convert_to_numpy=True,
-                normalize_embeddings=True,
-                show_progress_bar=False,
+        with self._embedding_lock:
+            if hasattr(
+                self.embedder,
+                "encode_query",
+            ):
+                vector = self.embedder.encode_query(
+                    [query],
+                    convert_to_numpy=True,
+                    normalize_embeddings=True,
+                    show_progress_bar=False,
+                )
+            else:
+                vector = self.embedder.encode(
+                    [query],
+                    convert_to_numpy=True,
+                    normalize_embeddings=True,
+                    show_progress_bar=False,
+                )
+
+            vector = np.asarray(
+                vector,
+                dtype="float32",
             )
-        else:
-            vector = self.embedder.encode(
-                [query],
-                convert_to_numpy=True,
-                normalize_embeddings=True,
-                show_progress_bar=False,
+
+            pool_size = min(
+                max(top_k * 10, 50),
+                int(self.index.ntotal),
             )
 
-        vector = np.asarray(vector, dtype="float32")
-
-        pool_size = min(
-            max(top_k * 10, 50),
-            int(self.index.ntotal),
-        )
-
-        scores, vector_ids = self.index.search(
-            vector,
-            pool_size,
-        )
+            scores, vector_ids = self.index.search(
+                vector,
+                pool_size,
+            )
 
         candidates: list[tuple[str, float]] = []
 
@@ -549,11 +520,13 @@ class RetrievalController:
                 rank=rank,
                 raw_score=score,
             )
+
             results.append(
                 self.active_evidence[item.evidence_id]
             )
 
         return results
+        
 
     def search_keywords(
         self,
@@ -719,6 +692,74 @@ class RetrievalController:
                 raw_score=1.0,
                 bonus=0.04,
             )
+            results.append(
+                self.active_evidence[item.evidence_id]
+            )
+
+        return results
+
+    
+    def lookup_footnotes(self,document_ids: list[str] | None = None,) -> list[EvidenceItem]:
+        """Retrieve approval footnotes from named documents.
+
+        The lookup accepts both dedicated footnote chunks and ordinary
+        text chunks containing explicit approval language.
+
+        Args:
+            document_ids (list[str] | None): Optional document filter.
+
+        Returns:
+            list[EvidenceItem]: Matching footnote evidence.
+        """
+        clauses = [
+            """
+            (
+                LOWER(content_type) = 'footnote'
+                OR LOWER(display_text)
+                    LIKE '%reviewed and approved by%'
+            )
+            """
+        ]
+        parameters: list[Any] = []
+
+        if document_ids:
+            placeholders = ",".join(
+                "?" for _ in document_ids
+            )
+            clauses.append(
+                f"document_id IN ({placeholders})"
+            )
+            parameters.extend(document_ids)
+
+        sql = f"""
+            SELECT *
+            FROM chunks
+            WHERE {" AND ".join(clauses)}
+            ORDER BY document_id, chunk_id
+        """
+
+        with self._connect() as connection:
+            rows = connection.execute(
+                sql,
+                parameters,
+            ).fetchall()
+
+        results: list[EvidenceItem] = []
+
+        for rank, row in enumerate(
+            rows,
+            start=1,
+        ):
+            item = self._chunk_to_evidence(row)
+
+            self._register(
+                item=item,
+                channel="footnote",
+                rank=rank,
+                raw_score=1.0,
+                bonus=0.08,
+            )
+
             results.append(
                 self.active_evidence[item.evidence_id]
             )
